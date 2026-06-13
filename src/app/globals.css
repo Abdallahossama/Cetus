@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------------
+   Cetus Design — brand tokens
+   navy  #1f2a44  ink #141c30  cream #e8dcc8  sand #f7f3ec  gold #c6a75e
+----------------------------------------------------------------- */
+@theme {
+  --color-navy: #1f2a44;
+  --color-ink: #141c30;
+  --color-cream: #e8dcc8;
+  --color-sand: #f7f3ec;
+  --color-gold: #c6a75e;
+  --color-gold-soft: #d8bd80;
+
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Pins/transforms can introduce sub-pixel horizontal scroll — clamp it. */
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  body {
+    /* Velvet navy: not flat — darker at the bottom, lifted in the middle */
+    background-color: var(--color-ink);
+    background-image: radial-gradient(
+      120% 90% at 50% 18%,
+      #243150 0%,
+      var(--color-navy) 45%,
+      var(--color-ink) 100%
+    );
+    background-attachment: fixed;
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  /* Consistent, on-brand focus ring for keyboard users */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: var(--color-navy);
+  }
+}
+
+/* Thin gold hairline divider helper */
+.hairline {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--color-gold) 60%, transparent),
+    transparent
+  );
+}
+
+/* Velvet navy panel — radial lift, used on dark sections to avoid a flat fill */
+.bg-velvet {
+  background-color: var(--color-navy);
+  background-image: radial-gradient(
+    120% 100% at 50% 0%,
+    #243150 0%,
+    var(--color-navy) 50%,
+    var(--color-ink) 100%
+  );
+}
+
+/* Faint film-grain / speckle texture overlay (premium matte feel) */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Gold gradient text accent */
+.text-gold-gradient {
+  background: linear-gradient(
+    100deg,
+    var(--color-gold) 0%,
+    var(--color-gold-soft) 50%,
+    var(--color-gold) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Respect users who prefer reduced motion: kill all non-essential motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
