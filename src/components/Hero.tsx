@@ -107,8 +107,6 @@ export default function Hero() {
   // SSR-safe client mount guard — intentional one-shot state set on mount.
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
-  // Keep WebGL off the smallest phones for performance.
-  const allowCanvas = useMediaQuery("(min-width: 768px)");
   // Drag-to-rotate only with a real pointer (so touch scroll isn't trapped).
   const pointerFine = useMediaQuery("(pointer: fine)");
 
@@ -139,7 +137,9 @@ export default function Hero() {
     my.set(0);
   }
 
-  const show3D = mounted && !reduceMotion && allowCanvas;
+  // Show the interactive 3D room on every screen (the static photo is only a
+  // fallback for reduced-motion users). On touch devices it gently auto-spins.
+  const show3D = mounted && !reduceMotion;
 
   return (
     <section
@@ -358,7 +358,7 @@ function StatBadge({
       initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: show ? 1 : 0, y: show ? 0 : -12 }}
       transition={{ duration: 0.8, ease, delay: badge.delay }}
-      className={`absolute z-20 hidden sm:block ${badge.className}`}
+      className={`absolute z-20 ${badge.className}`}
     >
       <div className="relative overflow-hidden rounded-lg border border-gold/40 bg-gradient-to-br from-white/90 to-sand/80 px-3 py-2 shadow-[0_16px_34px_-18px_rgba(31,42,68,0.4),0_0_24px_-14px_rgba(176,138,62,0.55)] backdrop-blur-xl">
         {/* Soft gold glow in the corner */}
