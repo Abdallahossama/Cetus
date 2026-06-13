@@ -9,8 +9,17 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="bg-paper relative py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+    <section id="about" className="bg-paper relative overflow-hidden py-24 lg:py-32">
+      {/* Soft blends so the beige eases into the navy sections above & below */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-navy to-transparent"
+      />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           {/* Editorial image */}
           <SectionReveal className="relative">
