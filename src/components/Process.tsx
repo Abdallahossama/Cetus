@@ -29,6 +29,8 @@ export default function Process() {
   const desktop = useIsDesktop();
   const reduce = usePrefersReducedMotion();
   const [mounted, setMounted] = useState(false);
+  // SSR-safe client mount guard — intentional one-shot state set on mount.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
   const pinned = mounted && desktop && !reduce;
 

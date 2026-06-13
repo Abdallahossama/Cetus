@@ -104,6 +104,8 @@ export default function Hero() {
   const reduceMotion = useReducedMotion();
   const { done } = useIntro();
   const [mounted, setMounted] = useState(false);
+  // SSR-safe client mount guard — intentional one-shot state set on mount.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
   // Keep WebGL off the smallest phones for performance.
   const allowCanvas = useMediaQuery("(min-width: 768px)");

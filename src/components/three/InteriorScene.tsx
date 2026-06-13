@@ -31,6 +31,8 @@ const ART_IMG =
 
 function WallArt() {
   const tex = useTexture(ART_IMG);
+  // One-time colour-space setup on the freshly loaded texture.
+  // eslint-disable-next-line react-hooks/immutability
   tex.colorSpace = SRGBColorSpace;
   return (
     <mesh position={[-0.55, 1.55, -2.11]}>

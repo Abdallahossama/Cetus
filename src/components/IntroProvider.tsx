@@ -42,7 +42,9 @@ export default function IntroProvider({ children }: { children: ReactNode }) {
     ).matches;
 
     // Skip the intro on repeat visits or for reduced-motion users.
+    // Intentional init-on-mount state from localStorage/media-query reads.
     if (seen || reduce) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDone(true);
       return;
     }
