@@ -11,6 +11,7 @@ import {
   IconClockHour4,
 } from "@tabler/icons-react";
 import { site } from "@/lib/site";
+import Terrain from "./Terrain";
 
 type Errors = {
   name?: string;
@@ -61,16 +62,21 @@ export default function Contact() {
   const border = (err?: string) => (err ? "border-red-500" : "border-gold/20");
 
   return (
-    <section id="contact" className="bg-velvet grain relative py-20 sm:py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+    <section id="contact" className="bg-velvet grain relative overflow-hidden py-24 lg:py-32">
+      <Terrain
+        variant="hero"
+        opacity={0.18}
+        className="[mask-image:linear-gradient(to_top,black,transparent_72%)]"
+      />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           {/* Intro + details */}
           <div className="flex flex-col justify-center">
             <p className="eyebrow">Let&apos;s Talk</p>
-            <h2 className="mt-5 font-serif text-3xl font-light leading-tight text-cream sm:text-4xl lg:text-5xl">
+            <h2 className="mt-5 font-serif text-3xl font-normal leading-tight text-beige sm:text-4xl lg:text-5xl">
               Start the conversation.
             </h2>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-cream/75">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-beige/75">
               Tell us about your space and what you have in mind. We&apos;ll arrange an
               initial consultation to explore how we can help.
             </p>
@@ -93,12 +99,12 @@ export default function Contact() {
               </li>
               <li className="flex items-center gap-3">
                 <IconMapPin size={18} className="text-gold" aria-hidden="true" />
-                <span className="text-cream/75">{site.address}</span>
+                <span className="text-beige/75">{site.address}</span>
               </li>
             </ul>
 
             <div className="hairline my-8 max-w-xs" />
-            <p className="flex items-center gap-2 text-sm text-cream/60">
+            <p className="flex items-center gap-2 text-sm text-beige/60">
               <IconClockHour4 size={16} className="text-gold" aria-hidden="true" />
               We reply within two working days.
             </p>
@@ -110,14 +116,14 @@ export default function Contact() {
             onSubmit={handleSubmit}
             className="card-luxe rounded-sm p-6 shadow-[0_30px_70px_-40px_rgba(0,0,0,0.6)] sm:p-8 lg:p-10"
           >
-            <h3 className="font-serif text-xl text-cream">Request a consultation</h3>
-            <p className="mt-1 text-xs uppercase tracking-[0.2em] text-cream/40">
+            <h3 className="font-serif text-xl text-beige">Request a consultation</h3>
+            <p className="font-cinzel mt-1.5 text-[10px] uppercase tracking-[0.2em] text-beige/45">
               Fields marked <span className="text-gold">*</span> are required
             </p>
 
             <div className="mt-7 grid gap-5 sm:grid-cols-2">
               <div>
-                <label htmlFor="name" className="text-sm text-cream/80">
+                <label htmlFor="name" className="text-sm text-beige/80">
                   Name <span className="text-gold">*</span>
                 </label>
                 <input
@@ -138,7 +144,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="email" className="text-sm text-cream/80">
+                <label htmlFor="email" className="text-sm text-beige/80">
                   Email <span className="text-gold">*</span>
                 </label>
                 <input
@@ -159,7 +165,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="phone" className="text-sm text-cream/80">
+                <label htmlFor="phone" className="text-sm text-beige/80">
                   Phone
                 </label>
                 <input
@@ -173,7 +179,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="projectType" className="text-sm text-cream/80">
+                <label htmlFor="projectType" className="text-sm text-beige/80">
                   Project type <span className="text-gold">*</span>
                 </label>
                 <div className="relative">
@@ -189,7 +195,7 @@ export default function Contact() {
                       Select…
                     </option>
                     {projectTypes.map((t) => (
-                      <option key={t} value={t} className="bg-ink text-cream">
+                      <option key={t} value={t} className="bg-ink text-beige">
                         {t}
                       </option>
                     ))}
@@ -209,7 +215,7 @@ export default function Contact() {
             </div>
 
             <div className="mt-5">
-              <label htmlFor="message" className="text-sm text-cream/80">
+              <label htmlFor="message" className="text-sm text-beige/80">
                 About your project <span className="text-gold">*</span>
               </label>
               <textarea

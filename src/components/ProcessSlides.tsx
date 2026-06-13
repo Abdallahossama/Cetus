@@ -58,7 +58,7 @@ export default function ProcessSlides() {
       onBlurCapture={() => setPaused(false)}
     >
       <div className="mb-6 flex items-center justify-end gap-5">
-        <span className="font-serif text-sm text-cream/60">
+        <span className="font-serif text-sm text-beige/60">
           <span className="text-gold">{phase.no}</span> / 0{phases.length}
         </span>
         <div className="flex gap-2">
@@ -66,7 +66,7 @@ export default function ProcessSlides() {
             type="button"
             onClick={() => paginate(-1)}
             aria-label="Previous phase"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold hover:text-gold"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-beige/20 text-beige transition-colors hover:border-gold hover:text-gold"
           >
             <ArrowLeft size={18} />
           </button>
@@ -74,7 +74,7 @@ export default function ProcessSlides() {
             type="button"
             onClick={() => paginate(1)}
             aria-label="Next phase"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold hover:text-gold"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-beige/20 text-beige transition-colors hover:border-gold hover:text-gold"
           >
             <ArrowRight size={18} />
           </button>
@@ -106,7 +106,7 @@ export default function ProcessSlides() {
                 draggable={false}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent lg:bg-gradient-to-r" />
-              <span className="pointer-events-none absolute left-6 top-6 font-serif text-6xl text-cream/15 sm:text-7xl">
+              <span className="pointer-events-none absolute left-6 top-6 font-serif text-6xl text-beige/15 sm:text-7xl">
                 {phase.no}
               </span>
             </div>
@@ -119,29 +119,29 @@ export default function ProcessSlides() {
                 <span className="eyebrow">
                   {phase.kicker}
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-cream/15 px-3 py-1 text-[11px] tracking-wide text-cream/65">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-beige/15 px-3 py-1 text-[11px] tracking-wide text-beige/65">
                   <Clock size={12} className="text-gold" aria-hidden="true" />
                   {phase.duration}
                 </span>
               </div>
-              <h3 className="font-serif text-3xl font-light text-cream sm:text-4xl">
+              <h3 className="font-serif text-3xl font-normal text-beige sm:text-4xl">
                 {phase.title}
               </h3>
-              <p className="max-w-md text-sm leading-relaxed text-cream/70 sm:text-base">
+              <p className="max-w-md text-sm leading-relaxed text-beige/70 sm:text-base">
                 {phase.description}
               </p>
               <ul className="mt-2 space-y-3">
                 {phase.steps.map((s) => (
-                  <li key={s} className="flex items-center gap-3 text-sm text-cream/85">
+                  <li key={s} className="flex items-center gap-3 text-sm text-beige/85">
                     <Check size={16} className="shrink-0 text-gold" aria-hidden="true" />
                     {s}
                   </li>
                 ))}
               </ul>
-              <p className="mt-1 flex items-start gap-2.5 border-l-2 border-gold/40 pl-3 text-sm text-cream/70">
+              <p className="mt-1 flex items-start gap-2.5 border-l-2 border-gold/40 pl-3 text-sm text-beige/70">
                 <PackageCheck size={16} className="mt-0.5 shrink-0 text-gold" aria-hidden="true" />
                 <span>
-                  <span className="text-cream/50">You receive: </span>
+                  <span className="text-beige/50">You receive: </span>
                   {phase.deliverable}
                 </span>
               </p>
@@ -158,7 +158,7 @@ export default function ProcessSlides() {
             onClick={() => goTo(i)}
             aria-label={`Go to phase ${p.no}: ${p.kicker}`}
             aria-current={i === index}
-            className="h-2.5 rounded-full bg-cream/20 transition-all"
+            className="h-2.5 rounded-full bg-beige/20 transition-all"
             style={{ width: i === index ? 40 : 10, background: i === index ? "var(--color-gold)" : undefined }}
           />
         ))}

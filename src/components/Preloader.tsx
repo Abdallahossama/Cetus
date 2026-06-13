@@ -74,24 +74,24 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       <KintsugiVeins opacity={0.5} />
 
       <div className="relative z-10 flex flex-col items-center [perspective:800px]">
-        <h1 className="flex font-serif text-6xl tracking-[0.15em] text-cream sm:text-8xl">
+        <h1 className="flex font-serif text-6xl tracking-[0.15em] text-beige sm:text-8xl">
           {WORD.map((l, i) => (
             <span key={i} data-letter className="inline-block [transform-style:preserve-3d]">
               {l}
             </span>
           ))}
-          <span data-letter className="inline-block text-gold">
+          <span data-letter className="inline-block text-gold-lite">
             .
           </span>
         </h1>
 
-        <p className="mt-6 text-[10px] uppercase tracking-[0.4em] text-cream/50">
+        <p className="font-cinzel mt-6 text-[10px] uppercase tracking-[0.4em] text-gold/80">
           Interior Design Studio
         </p>
 
         {/* progress bar + counter */}
         <div className="mt-10 flex w-56 items-center gap-4">
-          <span className="relative h-px flex-1 bg-cream/15">
+          <span className="relative h-px flex-1 bg-beige/15">
             <span
               ref={bar}
               className="absolute inset-0 block bg-gradient-to-r from-gold to-gold-soft"
@@ -109,7 +109,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
           e.stopPropagation();
           lift(true);
         }}
-        className="absolute bottom-8 right-8 z-10 text-xs uppercase tracking-[0.25em] text-cream/40 transition-colors hover:text-gold"
+        className="font-cinzel absolute bottom-8 right-8 z-10 text-[10px] uppercase tracking-[0.22em] text-beige/45 transition-colors hover:text-gold"
       >
         Skip
       </button>

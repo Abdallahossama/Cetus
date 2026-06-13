@@ -68,7 +68,9 @@ type Project = (typeof projects)[number];
 
 function Card({ p, className = "" }: { p: Project; className?: string }) {
   return (
-    <article className={`group relative overflow-hidden rounded-sm bg-navy ${className}`}>
+    <article
+      className={`group relative overflow-hidden rounded-sm border border-gold/10 bg-navy transition-all duration-500 hover:border-gold/35 hover:shadow-[0_34px_70px_-34px_rgba(0,0,0,0.85)] ${className}`}
+    >
       <div className="h-full w-full overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -76,13 +78,15 @@ function Card({ p, className = "" }: { p: Project; className?: string }) {
           alt={p.alt}
           loading="lazy"
           draggable={false}
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
         />
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/15 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 p-6">
-        <p className="text-[11px] uppercase tracking-[0.2em] text-gold-soft">{p.tag}</p>
-        <h3 className="mt-1 font-serif text-xl text-ivory">{p.title}</h3>
+        <p className="font-cinzel text-[10px] uppercase tracking-[0.22em] text-gold-lite">
+          {p.tag}
+        </p>
+        <h3 className="mt-1.5 font-serif text-2xl text-beige">{p.title}</h3>
       </div>
     </article>
   );
@@ -139,11 +143,14 @@ export default function Portfolio() {
           <SectionReveal className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
               <p className="eyebrow">Selected Work</p>
-              <h2 className="mt-5 font-serif text-4xl font-light leading-tight text-cream sm:text-5xl">
+              <h2 className="mt-5 font-serif text-4xl font-normal leading-tight text-beige sm:text-5xl">
                 A portfolio built on detail.
               </h2>
             </div>
-            <a href="#contact" className="text-sm tracking-wide text-gold transition-colors hover:text-gold-soft">
+            <a
+              href="#contact"
+              className="font-cinzel text-[11px] uppercase tracking-[0.18em] text-gold transition-colors hover:text-gold-lite"
+            >
               Start your project →
             </a>
           </SectionReveal>
@@ -172,11 +179,11 @@ export default function Portfolio() {
         <div className="relative z-10 mx-auto flex w-full max-w-7xl items-end justify-between gap-6 px-6 pb-10 lg:px-10">
           <div className="max-w-2xl">
             <p className="eyebrow">Selected Work</p>
-            <h2 className="mt-5 font-serif text-4xl font-light leading-tight text-cream sm:text-5xl">
+            <h2 className="mt-5 font-serif text-4xl font-normal leading-tight text-beige sm:text-5xl">
               A portfolio built on detail.
             </h2>
           </div>
-          <span className="hidden text-xs uppercase tracking-[0.25em] text-cream/40 lg:block">
+          <span className="font-cinzel hidden text-[11px] uppercase tracking-[0.2em] text-beige/45 lg:block">
             Scroll to explore →
           </span>
         </div>

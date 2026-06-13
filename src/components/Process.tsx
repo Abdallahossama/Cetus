@@ -13,10 +13,10 @@ function Header() {
   return (
     <div className="max-w-2xl">
       <p className="eyebrow">How We Work</p>
-      <h2 className="mt-5 font-serif text-3xl font-light leading-tight text-cream sm:text-4xl lg:text-5xl">
+      <h2 className="mt-5 font-serif text-3xl font-normal leading-tight text-beige sm:text-4xl lg:text-5xl">
         Three phases, one seamless journey.
       </h2>
-      <p className="mt-5 max-w-xl text-sm leading-relaxed text-cream/70 sm:text-base">
+      <p className="mt-5 max-w-xl text-sm leading-relaxed text-beige/70 sm:text-base">
         A clear, collaborative path from first conversation to finished room —
         with a single point of contact, transparent budgets and no surprises at
         any stage.
@@ -117,14 +117,14 @@ export default function Process() {
           <span ref={counter} className="font-serif text-sm text-gold">
             01
           </span>
-          <span className="relative h-40 w-px bg-cream/15">
+          <span className="relative h-40 w-px bg-beige/15">
             <span
               ref={bar}
               className="absolute inset-x-0 top-0 block h-full origin-top bg-gold"
               style={{ transform: "scaleY(0)" }}
             />
           </span>
-          <span className="font-serif text-xs text-cream/40">0{phases.length}</span>
+          <span className="font-serif text-xs text-beige/40">0{phases.length}</span>
         </div>
 
         <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col px-6 lg:px-16">
@@ -150,29 +150,29 @@ export default function Process() {
                     <span className="eyebrow">
                       {phase.no} · {phase.kicker}
                     </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-cream/15 px-3 py-1 text-[11px] tracking-wide text-cream/65">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-beige/15 px-3 py-1 text-[11px] tracking-wide text-beige/65">
                       <Clock size={12} className="text-gold" aria-hidden="true" />
                       {phase.duration}
                     </span>
                   </div>
-                  <h3 className="font-serif text-3xl font-light text-cream sm:text-4xl">
+                  <h3 className="font-serif text-3xl font-normal text-beige sm:text-4xl">
                     {phase.title}
                   </h3>
-                  <p className="max-w-md text-sm leading-relaxed text-cream/70 sm:text-base">
+                  <p className="max-w-md text-sm leading-relaxed text-beige/70 sm:text-base">
                     {phase.description}
                   </p>
                   <ul className="mt-1 grid gap-3 sm:grid-cols-2">
                     {phase.steps.map((s) => (
-                      <li key={s} className="flex items-center gap-3 text-sm text-cream/85">
+                      <li key={s} className="flex items-center gap-3 text-sm text-beige/85">
                         <Check size={16} className="shrink-0 text-gold" aria-hidden="true" />
                         {s}
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-1 flex items-start gap-2.5 border-l-2 border-gold/40 pl-3 text-sm text-cream/70">
+                  <p className="mt-1 flex items-start gap-2.5 border-l-2 border-gold/40 pl-3 text-sm text-beige/70">
                     <PackageCheck size={16} className="mt-0.5 shrink-0 text-gold" aria-hidden="true" />
                     <span>
-                      <span className="text-cream/50">You receive: </span>
+                      <span className="text-beige/50">You receive: </span>
                       {phase.deliverable}
                     </span>
                   </p>
@@ -196,7 +196,7 @@ export default function Process() {
                     className="h-full w-full object-cover"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
-                  <span className="pointer-events-none absolute left-5 top-5 font-serif text-5xl text-cream/20 sm:text-6xl">
+                  <span className="pointer-events-none absolute left-5 top-5 font-serif text-5xl text-beige/20 sm:text-6xl">
                     {phase.no}
                   </span>
                 </div>

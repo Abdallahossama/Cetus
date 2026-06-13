@@ -227,7 +227,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: done ? 1 : 0 }}
           transition={{ duration: 1, ease, delay: 0.1 }}
-          className="relative mx-auto aspect-square w-full max-w-[13rem] sm:aspect-[4/5] sm:max-w-md lg:ml-auto lg:mr-0 lg:aspect-[4/3] lg:max-w-md"
+          className="relative mx-auto aspect-square w-full max-w-68 sm:aspect-[4/5] sm:max-w-md lg:ml-auto lg:mr-0 lg:aspect-[4/3] lg:max-w-md"
           onMouseMove={handleMouse}
           onMouseLeave={resetMouse}
         >
@@ -293,15 +293,43 @@ export default function Hero() {
             </div>
           )}
         </motion.div>
+
+        {/* Mobile credential strip — clean grid instead of badges crowding the
+            small 3D room. Floating badges take over from sm upward. */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: done ? 1 : 0, y: done ? 0 : 16 }}
+          transition={{ duration: 0.7, ease, delay: 0.3 }}
+          className="grid grid-cols-2 gap-3 sm:hidden"
+        >
+          {STAT_BADGES.map((badge) => (
+            <div
+              key={badge.line2}
+              className="relative overflow-hidden rounded-lg border border-gold/25 bg-navy-2/70 px-4 py-3 backdrop-blur-sm"
+            >
+              <div className="pointer-events-none absolute inset-x-3 top-0 h-px bg-gradient-to-r from-transparent via-gold/55 to-transparent" />
+              <div className="flex items-baseline gap-0.5">
+                <span className="text-foil font-serif text-2xl leading-none">{badge.value}</span>
+                {"suffix" in badge && badge.suffix && (
+                  <span className="font-serif text-sm leading-none text-gold/70">{badge.suffix}</span>
+                )}
+              </div>
+              <p className="font-cinzel mt-1.5 text-[8px] uppercase tracking-[0.16em] text-beige">
+                {badge.line1}
+              </p>
+              <p className="text-[8px] uppercase tracking-[0.16em] text-beige-dim">{badge.line2}</p>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
       {/* Scroll cue */}
       <a
         href="#about"
         aria-label="Scroll to content"
-        className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-cream/50 transition-colors hover:text-gold lg:flex"
+        className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-beige/45 transition-colors hover:text-gold lg:flex"
       >
-        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+        <span className="font-cinzel text-[10px] uppercase tracking-[0.28em]">Scroll</span>
         <motion.span
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
@@ -335,7 +363,7 @@ function BackdropFrame({
       initial={{ opacity: 0, scale: 0.92, y: 24 }}
       animate={{ opacity: 0.62, scale: 1, y: 0 }}
       transition={{ duration: 1.1, ease, delay: frame.delay }}
-      className={`absolute ${frame.className}`}
+      className={`absolute hidden sm:block ${frame.className}`}
     >
       <motion.div
         animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
@@ -376,7 +404,7 @@ function StatBadge({
       initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: show ? 1 : 0, y: show ? 0 : -12 }}
       transition={{ duration: 0.8, ease, delay: badge.delay }}
-      className={`absolute z-20 ${badge.className}`}
+      className={`absolute z-20 hidden sm:block ${badge.className}`}
     >
       <div className="relative overflow-hidden rounded-md border border-gold/25 bg-navy-2/85 px-1.5 py-1 shadow-[0_18px_38px_-20px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:rounded-lg sm:px-3 sm:py-2">
         {/* Soft gold glow in the corner */}
