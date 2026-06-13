@@ -69,21 +69,21 @@ const BACKDROP_FRAMES = [
   {
     src: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=520&q=70",
     alt: "Minimal living room with floor-to-ceiling windows",
-    className: "left-[-1%] top-[4%] w-[26%] rotate-[-7deg]",
+    className: "left-[-5%] top-[2%] w-[26%] rotate-[-7deg]",
     depth: 26,
     delay: 0.2,
   },
   {
     src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=520&q=70",
     alt: "Elegant living room with sofa and warm lighting",
-    className: "right-[4%] top-[12%] w-[22%] rotate-[6deg]",
+    className: "right-[0%] top-[10%] w-[22%] rotate-[6deg]",
     depth: 16,
     delay: 0.32,
   },
   {
     src: "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=520&q=70",
     alt: "Elegant bedroom with layered textiles and soft lighting",
-    className: "bottom-[6%] left-[12%] w-[24%] rotate-[4deg]",
+    className: "bottom-[3%] left-[7%] w-[24%] rotate-[4deg]",
     depth: 21,
     delay: 0.44,
   },
@@ -227,7 +227,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: done ? 1 : 0 }}
           transition={{ duration: 1, ease, delay: 0.1 }}
-          className="relative mx-auto aspect-square w-full max-w-[15rem] sm:aspect-[4/5] sm:max-w-md lg:ml-auto lg:mr-0 lg:aspect-[4/3] lg:max-w-md"
+          className="relative mx-auto aspect-square w-full max-w-[13rem] sm:aspect-[4/5] sm:max-w-md lg:ml-auto lg:mr-0 lg:aspect-[4/3] lg:max-w-md"
           onMouseMove={handleMouse}
           onMouseLeave={resetMouse}
         >

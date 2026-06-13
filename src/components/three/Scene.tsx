@@ -77,13 +77,13 @@ export default function Scene({
       orthographic
       frameloop={active ? "always" : "demand"}
       shadows={!lite}
-      dpr={lite ? 1 : [1, 1.6]}
+      dpr={lite ? [1, 2] : [1, 1.6]}
       gl={{
-        antialias: !lite,
+        antialias: true,
         alpha: true,
         powerPreference: lite ? "default" : "high-performance",
       }}
-      camera={{ position: [8, 7, 8], zoom: lite ? 44 : 62, near: 0.1, far: 100 }}
+      camera={{ position: [8, 7, 8], zoom: lite ? 40 : 62, near: 0.1, far: 100 }}
       onCreated={({ camera }) => camera.lookAt(0, 0.6, 0)}
     >
       <ambientLight intensity={lite ? 0.75 : 0.55} />
@@ -131,12 +131,12 @@ export default function Scene({
         blur={2.6}
         far={4}
         color="#0b1020"
-        resolution={lite ? 128 : 256}
+        resolution={256}
         frames={lite ? 1 : Infinity}
       />
 
       {/* In-scene environment for subtle gold sheen */}
-      <Environment resolution={lite ? 64 : 256}>
+      <Environment resolution={lite ? 128 : 256}>
         <Lightformer intensity={1.2} position={[0, 4, 2]} scale={[6, 3, 1]} color="#f7eccb" />
         <Lightformer intensity={0.9} position={[-3, 1, 2]} scale={[4, 4, 1]} color="#c6a75e" />
         <Lightformer intensity={0.5} position={[3, 2, -2]} scale={[3, 3, 1]} color="#243150" />
