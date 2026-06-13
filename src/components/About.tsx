@@ -9,17 +9,8 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="bg-paper relative overflow-hidden py-24 lg:py-32">
-      {/* Soft blends so the beige eases into the navy sections above & below */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink to-transparent"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-navy to-transparent"
-      />
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
+    <section id="about" className="bg-velvet relative py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           {/* Editorial image */}
           <SectionReveal className="relative">
@@ -39,33 +30,31 @@ export default function About() {
 
           {/* Copy */}
           <SectionReveal className="flex flex-col justify-center" delay={0.1}>
-            <p className="font-cinzel text-[0.72rem] font-medium uppercase tracking-[0.22em] text-gold-deep">
-              The Studio
-            </p>
-            <h2 className="mt-5 font-serif text-4xl font-normal leading-[1.1] text-ink sm:text-5xl">
+            <p className="eyebrow">The Studio</p>
+            <h2 className="mt-6 font-serif text-4xl font-normal leading-[1.1] text-beige sm:text-5xl">
               We design interiors that feel inevitable.
             </h2>
-            <p className="mt-6 text-base leading-[1.75] text-ink/75">
+            <p className="mt-6 text-base leading-[1.75] text-beige-dim">
               Cetus Design is a multidisciplinary studio working across
               residential, hospitality and workplace interiors. We believe a
               well-designed space should feel effortless — balanced in light,
               proportion and material, and grounded in how people actually live
               and work.
             </p>
-            <p className="mt-4 text-base leading-[1.75] text-ink/75">
+            <p className="mt-4 text-base leading-[1.75] text-beige-dim">
               From a single room to a full property, every project is led
               personally and delivered with the same attention to craft.
             </p>
 
-            <div className="my-9 h-px w-full bg-ink/15" />
+            <div className="hairline my-9" />
 
             <dl className="grid grid-cols-3 gap-6">
               {stats.map((s) => (
                 <div key={s.label}>
-                  <dt className="font-serif text-4xl text-gold-deep sm:text-5xl">
+                  <dt className="text-foil font-serif text-4xl sm:text-5xl">
                     {s.value}
                   </dt>
-                  <dd className="font-cinzel mt-2 text-[11px] uppercase tracking-[0.16em] text-ink/55">
+                  <dd className="font-cinzel mt-2 text-[11px] uppercase tracking-[0.16em] text-beige-dim">
                     {s.label}
                   </dd>
                 </div>
