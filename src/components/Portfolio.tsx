@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useIsDesktop, usePrefersReducedMotion } from "@/lib/useMediaQuery";
 import SectionReveal from "./SectionReveal";
+import Terrain from "./Terrain";
 
 const projects = [
   {
@@ -128,8 +129,13 @@ export default function Portfolio() {
   /* -------- Fallback: vertical grid (mobile / reduced motion) -------- */
   if (!horizontal) {
     return (
-      <section id="portfolio" ref={section} className="bg-ink py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <section id="portfolio" ref={section} className="relative overflow-hidden bg-ink py-24 lg:py-32">
+        <Terrain
+          variant="hero"
+          opacity={0.28}
+          className="[mask-image:linear-gradient(to_top,black_25%,transparent_85%)]"
+        />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
           <SectionReveal className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
               <p className="eyebrow">Selected Work</p>
@@ -157,8 +163,13 @@ export default function Portfolio() {
   /* -------- Horizontal scroll gallery (desktop) -------- */
   return (
     <section id="portfolio" ref={section} className="relative bg-ink">
-      <div ref={pinWrap} className="flex h-dvh flex-col justify-center overflow-hidden">
-        <div className="mx-auto flex w-full max-w-7xl items-end justify-between gap-6 px-6 pb-10 lg:px-10">
+      <div ref={pinWrap} className="relative flex h-dvh flex-col justify-center overflow-hidden">
+        <Terrain
+          variant="hero"
+          opacity={0.28}
+          className="[mask-image:linear-gradient(to_top,black_25%,transparent_85%)]"
+        />
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl items-end justify-between gap-6 px-6 pb-10 lg:px-10">
           <div className="max-w-2xl">
             <p className="eyebrow">Selected Work</p>
             <h2 className="mt-5 font-serif text-4xl font-light leading-tight text-cream sm:text-5xl">
@@ -170,7 +181,7 @@ export default function Portfolio() {
           </span>
         </div>
 
-        <div ref={track} className="flex gap-6 pl-6 lg:pl-10">
+        <div ref={track} className="relative z-10 flex gap-6 pl-6 lg:pl-10">
           {projects.map((p) => (
             <Card key={p.title} p={p} className="h-[58vh] w-[78vw] shrink-0 sm:w-[30rem]" />
           ))}

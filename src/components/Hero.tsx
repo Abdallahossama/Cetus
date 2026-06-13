@@ -177,7 +177,7 @@ export default function Hero() {
       {/* Soft royal glow behind the visual */}
       <div className="pointer-events-none absolute left-[58%] top-1/2 h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-royal/30 blur-[140px]" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-6 lg:px-10">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 px-6 lg:grid-cols-[1fr_0.8fr] lg:gap-14 lg:px-10">
         {/* ---------- Copy ---------- */}
         <motion.div style={reduceMotion ? undefined : { y: contentY, opacity: contentOpacity }}>
           <motion.div variants={container} initial="hidden" animate={done ? "show" : "hidden"}>
@@ -227,7 +227,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: done ? 1 : 0 }}
           transition={{ duration: 1, ease, delay: 0.1 }}
-          className="relative mx-auto aspect-square w-full max-w-[15rem] sm:aspect-[4/5] sm:max-w-md lg:aspect-[4/3] lg:max-w-none"
+          className="relative mx-auto aspect-square w-full max-w-[15rem] sm:aspect-[4/5] sm:max-w-md lg:ml-auto lg:mr-0 lg:aspect-[4/3] lg:max-w-md"
           onMouseMove={handleMouse}
           onMouseLeave={resetMouse}
         >
