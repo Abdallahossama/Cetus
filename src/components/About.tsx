@@ -9,7 +9,7 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="bg-velvet grain relative py-24 lg:py-32">
+    <section id="about" className="bg-paper relative py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           {/* Editorial image */}
@@ -20,9 +20,9 @@ export default function About() {
               className="aspect-[4/5] rounded-sm bg-ink"
               amount={50}
             />
-            <div className="absolute -bottom-6 -right-6 hidden rounded-sm border border-gold/40 bg-white/85 px-6 py-5 shadow-[0_22px_50px_-26px_rgba(31,42,68,0.45)] backdrop-blur-sm sm:block">
-              <p className="font-serif text-2xl text-gold">Cetus</p>
-              <p className="text-xs uppercase tracking-[0.2em] text-cream/60">
+            <div className="card-luxe absolute -bottom-6 -right-6 hidden rounded-sm px-6 py-5 shadow-[0_30px_60px_-30px_rgba(10,17,36,0.6)] sm:block">
+              <p className="text-foil font-serif text-2xl">Cetus</p>
+              <p className="font-cinzel text-[11px] uppercase tracking-[0.2em] text-beige-dim">
                 Est. 2013
               </p>
             </div>
@@ -30,33 +30,33 @@ export default function About() {
 
           {/* Copy */}
           <SectionReveal className="flex flex-col justify-center" delay={0.1}>
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">
+            <p className="font-cinzel text-[0.72rem] font-medium uppercase tracking-[0.22em] text-gold-deep">
               The Studio
             </p>
-            <h2 className="mt-5 font-serif text-4xl font-light leading-tight text-cream sm:text-5xl">
+            <h2 className="mt-5 font-serif text-4xl font-normal leading-[1.1] text-ink sm:text-5xl">
               We design interiors that feel inevitable.
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-cream/75">
+            <p className="mt-6 text-base leading-[1.75] text-ink/75">
               Cetus Design is a multidisciplinary studio working across
               residential, hospitality and workplace interiors. We believe a
               well-designed space should feel effortless — balanced in light,
               proportion and material, and grounded in how people actually live
               and work.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-cream/75">
+            <p className="mt-4 text-base leading-[1.75] text-ink/75">
               From a single room to a full property, every project is led
               personally and delivered with the same attention to craft.
             </p>
 
-            <div className="hairline my-9" />
+            <div className="my-9 h-px w-full bg-ink/15" />
 
             <dl className="grid grid-cols-3 gap-6">
               {stats.map((s) => (
                 <div key={s.label}>
-                  <dt className="font-serif text-3xl text-gold sm:text-4xl">
+                  <dt className="font-serif text-4xl text-gold-deep sm:text-5xl">
                     {s.value}
                   </dt>
-                  <dd className="mt-1 text-xs uppercase tracking-wide text-cream/60">
+                  <dd className="font-cinzel mt-2 text-[11px] uppercase tracking-[0.16em] text-ink/55">
                     {s.label}
                   </dd>
                 </div>

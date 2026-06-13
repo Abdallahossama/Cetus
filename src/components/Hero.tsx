@@ -14,7 +14,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import KintsugiVeins from "./KintsugiVeins";
+import Terrain from "./Terrain";
 import SceneBoundary from "./SceneBoundary";
 import { useIntro } from "./IntroProvider";
 import { useMediaQuery } from "@/lib/useMediaQuery";
@@ -152,57 +152,68 @@ export default function Hero() {
       ref={sectionRef}
       className="bg-velvet grain relative flex min-h-dvh items-center overflow-hidden pt-28 pb-16 lg:pt-20"
     >
-      {/* Background photo on the left, gradient-fading into the velvet bg on the right */}
+      {/* Faint room photo on the left, dissolving into the navy field */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-25"
+          className="absolute inset-0 bg-cover bg-center opacity-15"
           style={{
             backgroundImage: `url(${LUXURY_IMG})`,
             maskImage:
-              "linear-gradient(to right, black 0%, black 30%, transparent 68%)",
+              "linear-gradient(to right, black 0%, black 24%, transparent 58%)",
             WebkitMaskImage:
-              "linear-gradient(to right, black 0%, black 30%, transparent 68%)",
+              "linear-gradient(to right, black 0%, black 24%, transparent 58%)",
           }}
         />
-        {/* Ivory wash for legibility — keeps dark copy crisp over the photo */}
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-ink/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/75 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/30" />
       </div>
 
-      <KintsugiVeins opacity={0.3} />
-      <div className="pointer-events-none absolute left-[55%] top-1/2 h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/15 blur-[130px]" />
+      {/* Signature gold terrain — clustered lower-right, faded away from copy */}
+      <Terrain
+        variant="hero"
+        opacity={0.32}
+        className="[mask-image:linear-gradient(to_top,black_30%,transparent_85%)]"
+      />
+      {/* Soft royal glow behind the visual */}
+      <div className="pointer-events-none absolute left-[58%] top-1/2 h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-royal/30 blur-[140px]" />
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-6 lg:px-10">
         {/* ---------- Copy ---------- */}
         <motion.div style={reduceMotion ? undefined : { y: contentY, opacity: contentOpacity }}>
           <motion.div variants={container} initial="hidden" animate={done ? "show" : "hidden"}>
-            <motion.p variants={item} className="mb-6 text-xs uppercase tracking-[0.35em] text-gold">
+            <motion.p variants={item} className="eyebrow mb-7">
               Interior Design Studio
             </motion.p>
             <motion.h1
               variants={item}
-              className="font-serif text-[2.6rem] font-light leading-[1.08] text-cream sm:text-6xl lg:text-7xl"
+              className="font-serif text-[3.1rem] font-normal leading-[1.05] text-beige sm:text-7xl lg:text-[clamp(3.5rem,7vw,6rem)]"
             >
-              Spaces designed to be
-              <span className="italic text-gold"> lived in</span>.
+              Spaces designed
+              <br className="hidden sm:block" /> to be{" "}
+              <span className="text-foil italic">
+                lived in
+                <span aria-hidden="true" className="ml-2 align-super text-[0.45em] text-gold-lite">
+                  ✦
+                </span>
+              </span>
             </motion.h1>
             <motion.p
               variants={item}
-              className="mt-7 max-w-md text-base leading-relaxed text-cream/75 sm:text-lg"
+              className="mt-8 max-w-md text-base leading-[1.75] text-beige-dim sm:text-lg"
             >
               Cetus Design shapes refined residential and commercial interiors —
               guiding every project from first conversation to final styling.
             </motion.p>
-            <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
+            <motion.div variants={item} className="mt-11 flex flex-wrap items-center gap-4">
               <a
                 href="#contact"
-                className="btn-gold rounded-full px-7 py-3.5 text-sm font-medium"
+                className="btn-foil font-cinzel px-7 py-3.5 text-[12px] uppercase tracking-[0.18em]"
               >
                 Book a Consultation
               </a>
               <a
                 href="#portfolio"
-                className="rounded-full border border-navy/25 px-7 py-3.5 text-sm font-medium text-navy transition-colors hover:border-gold hover:text-gold"
+                className="btn-outline font-cinzel px-7 py-3.5 text-[12px] uppercase tracking-[0.18em]"
               >
                 View Our Work
               </a>
@@ -329,12 +340,12 @@ function BackdropFrame({
       <motion.div
         animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: frame.delay }}
-        className="overflow-hidden rounded-sm border border-gold/30 bg-white/70 p-1.5 shadow-[0_24px_50px_-30px_rgba(31,42,68,0.5)] backdrop-blur-[1px]"
+        className="overflow-hidden rounded-sm border border-gold/25 bg-navy-2/80 p-1.5 shadow-[0_24px_50px_-28px_rgba(0,0,0,0.8)] backdrop-blur-[1px]"
       >
         <div className="relative overflow-hidden rounded-[1px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={frame.src} alt={frame.alt} className="aspect-[4/5] w-full object-cover opacity-85" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/25 via-transparent to-transparent" />
+          <img src={frame.src} alt={frame.alt} className="aspect-[4/5] w-full object-cover opacity-80" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-transparent" />
         </div>
       </motion.div>
     </motion.div>
@@ -367,29 +378,29 @@ function StatBadge({
       transition={{ duration: 0.8, ease, delay: badge.delay }}
       className={`absolute z-20 ${badge.className}`}
     >
-      <div className="relative overflow-hidden rounded-md border border-gold/40 bg-gradient-to-br from-white/90 to-sand/80 px-1.5 py-1 shadow-[0_16px_34px_-18px_rgba(31,42,68,0.4),0_0_24px_-14px_rgba(176,138,62,0.55)] backdrop-blur-xl sm:rounded-lg sm:px-3 sm:py-2">
+      <div className="relative overflow-hidden rounded-md border border-gold/25 bg-navy-2/85 px-1.5 py-1 shadow-[0_18px_38px_-20px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:rounded-lg sm:px-3 sm:py-2">
         {/* Soft gold glow in the corner */}
-        <div className="pointer-events-none absolute -right-4 -top-4 h-9 w-9 rounded-full bg-gold/25 blur-lg sm:-right-5 sm:-top-5 sm:h-12 sm:w-12 sm:blur-xl" />
+        <div className="pointer-events-none absolute -right-4 -top-4 h-9 w-9 rounded-full bg-gold/20 blur-lg sm:-right-5 sm:-top-5 sm:h-12 sm:w-12 sm:blur-xl" />
         {/* Top hairline accent */}
-        <div className="pointer-events-none absolute inset-x-2 top-0 h-px bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-2 top-0 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
 
         <div className="relative flex items-center gap-1.5 sm:gap-2">
           <div className="flex items-baseline">
-            <span className="font-serif text-base leading-none text-gold sm:text-2xl">
+            <span className="text-foil font-serif text-base leading-none sm:text-2xl">
               {badge.value}
             </span>
             {"suffix" in badge && badge.suffix && (
-              <span className="font-serif text-[10px] leading-none text-gold/75 sm:text-sm">
+              <span className="font-serif text-[10px] leading-none text-gold/70 sm:text-sm">
                 {badge.suffix}
               </span>
             )}
           </div>
-          <span className="h-4 w-px bg-gradient-to-b from-transparent via-gold/55 to-transparent sm:h-6" />
+          <span className="h-4 w-px bg-gradient-to-b from-transparent via-gold/45 to-transparent sm:h-6" />
           <div className="leading-tight">
-            <p className="text-[7px] font-semibold uppercase tracking-[0.16em] text-navy sm:text-[9px] sm:tracking-[0.18em]">
+            <p className="font-cinzel text-[7px] uppercase tracking-[0.16em] text-beige sm:text-[9px] sm:tracking-[0.18em]">
               {badge.line1}
             </p>
-            <p className="text-[7px] uppercase tracking-[0.16em] text-navy/60 sm:text-[9px] sm:tracking-[0.18em]">
+            <p className="text-[7px] uppercase tracking-[0.16em] text-beige-dim sm:text-[9px] sm:tracking-[0.18em]">
               {badge.line2}
             </p>
           </div>

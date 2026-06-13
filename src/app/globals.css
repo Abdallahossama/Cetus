@@ -1,33 +1,48 @@
 @import "tailwindcss";
 
 /* ----------------------------------------------------------------
-   Cetus Design — light luxury brand tokens
-   ivory #faf6ee  sand #f1e9db  espresso #241d14
-   navy #1f2a44 (dark accent)  gold #b08a3e
-   NOTE: token *names* are kept for backwards compatibility, but their
-   roles are now light-mode: `ink` = page ivory, `cream` = espresso text.
+   Cetus Design — deep-navy + metallic-gold editorial identity
+   ~75% navy / 20% beige paper / 5% gold. Gold = thin accents only.
 ----------------------------------------------------------------- */
 @theme {
-  --color-navy: #1f2a44; /* deep dark accent — buttons text, footer */
-  --color-ink: #faf6ee; /* page background (ivory) */
-  --color-cream: #241d14; /* primary text (espresso) */
-  --color-sand: #f1e9db; /* warm panel / secondary surface */
-  --color-ivory: #faf6ee;
-  --color-gold: #b08a3e; /* antique gold accent */
-  --color-gold-soft: #cdb069;
+  --color-ink: #0a1124; /* deepest bg, footers, hero base */
+  --color-navy: #16233f; /* primary background */
+  --color-navy-2: #1f2a44; /* cards / nav / elevated surfaces */
+  --color-royal: #243a6b; /* richer navy — gradients/glows only */
+  --color-beige: #e8dcc8; /* light paper sections, body text on dark */
+  --color-beige-dim: #b9b19e; /* secondary text on dark */
+  --color-gold: #c6a75e; /* primary accent: lines, borders, CTAs */
+  --color-gold-lite: #e6c77e; /* gold highlight / top of foil */
+  --color-gold-deep: #9c7c3c; /* gold shadow / bottom of foil */
 
-  --font-serif: var(--font-playfair), Georgia, serif;
+  /* Back-compat aliases for legacy class names still in components */
+  --color-cream: #e8dcc8;
+  --color-ivory: #e8dcc8;
+  --color-sand: #1f2a44;
+  --color-gold-soft: #e6c77e;
+
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-cinzel: var(--font-cinzel-src), Georgia, serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
 @layer base {
+  :root {
+    --navy-radial: radial-gradient(
+      120% 100% at 50% 0%,
+      #243a6b 0%,
+      #16233f 40%,
+      #0a1124 100%
+    );
+    --gold-foil: linear-gradient(135deg, #9c7c3c 0%, #e6c77e 45%, #c6a75e 100%);
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
-  /* Pins/transforms can introduce sub-pixel horizontal scroll — clamp it. */
   html,
   body {
     overflow-x: hidden;
@@ -35,21 +50,32 @@
   }
 
   body {
-    /* Warm ivory canvas — softly lifted toward the top */
-    background-color: var(--color-ivory);
-    background-image: radial-gradient(
-      120% 90% at 50% 12%,
-      #fffdf8 0%,
-      #faf6ee 45%,
-      #f3ecdf 100%
-    );
+    background-color: var(--color-ink);
+    background-image: var(--navy-radial);
     background-attachment: fixed;
-    color: var(--color-cream);
+    color: var(--color-beige);
     font-family: var(--font-sans);
-    line-height: 1.6;
+    font-weight: 300;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
   }
 
-  /* Consistent, on-brand focus ring for keyboard users */
+  /* fixed background-attachment is a known scroll-jank source on phones */
+  @media (max-width: 767px) {
+    body {
+      background-attachment: scroll;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-gold);
     outline-offset: 3px;
@@ -58,11 +84,44 @@
 
   ::selection {
     background-color: var(--color-gold);
-    color: #fffdf8;
+    color: var(--color-ink);
   }
 }
 
-/* Thin gold hairline divider helper */
+/* ---------- Editorial helpers ---------- */
+
+/* Cinzel tracked-caps eyebrow / label */
+.eyebrow {
+  font-family: var(--font-cinzel), serif;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 500;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--color-gold);
+}
+
+/* Gold foil gradient text — headlines, logo, key numbers only */
+.text-foil {
+  background-image: var(--gold-foil);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Navy radial panel for feature sections */
+.bg-velvet {
+  background-color: var(--color-navy);
+  background-image: var(--navy-radial);
+}
+
+/* Light "paper" section — dark text on beige */
+.bg-paper {
+  background-color: var(--color-beige);
+  color: var(--color-ink);
+}
+
+/* Thin gold hairline divider */
 .hairline {
   height: 1px;
   background: linear-gradient(
@@ -73,18 +132,13 @@
   );
 }
 
-/* Warm cream panel — soft radial lift, used on feature sections */
-.bg-velvet {
-  background-color: #f7f1e6;
-  background-image: radial-gradient(
-    120% 100% at 50% 0%,
-    #fffdf8 0%,
-    #f6efe2 52%,
-    #efe6d6 100%
-  );
+/* Card surface — navy-2 with a gold hairline border */
+.card-luxe {
+  background-color: var(--color-navy-2);
+  border: 1px solid rgba(198, 167, 94, 0.25);
 }
 
-/* Faint film-grain / speckle texture overlay (premium matte feel) */
+/* Faint film-grain texture (premium matte feel) */
 .grain {
   position: relative;
 }
@@ -93,94 +147,87 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
-}
-
-/* Gold gradient text accent */
-.text-gold-gradient {
-  background: linear-gradient(
-    100deg,
-    #9c7c3a 0%,
-    var(--color-gold-soft) 50%,
-    #9c7c3a 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* fixed background attachment is a known scroll-jank source on phones */
-@media (max-width: 767px) {
-  body {
-    background-attachment: scroll;
-  }
 }
 
 /* ----------------------------------------------------------------
-   Luxury CTA — gold gradient pill with sheen sweep + soft lift
+   Outlined gold CTA — transparent w/ gold hairline; fills with gold
+   foil on hover and flips text to ink. Radius 4–6px (editorial).
 ----------------------------------------------------------------- */
-.btn-gold {
+.btn-outline {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-image: linear-gradient(
-    135deg,
-    #e6cf94 0%,
-    #cdb069 38%,
-    #b08a3e 100%
-  );
-  color: var(--color-navy);
-  box-shadow:
-    0 10px 26px -12px rgba(176, 138, 62, 0.65),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),
-    inset 0 -1px 0 rgba(120, 86, 30, 0.35);
+  border: 1px solid var(--color-gold);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--color-gold);
   transition:
-    box-shadow 0.35s ease,
-    transform 0.35s ease;
+    color 0.45s ease,
+    border-color 0.45s ease;
 }
-.btn-gold:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 16px 34px -12px rgba(176, 138, 62, 0.8),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65),
-    inset 0 -1px 0 rgba(120, 86, 30, 0.35);
-}
-.btn-gold:active {
-  transform: translateY(0);
-}
-/* moving light sweep */
-.btn-gold::before {
+.btn-outline::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(
-    120deg,
-    transparent 28%,
-    rgba(255, 255, 255, 0.6) 48%,
-    transparent 68%
-  );
-  transform: translateX(-130%);
-  transition: transform 0.75s ease;
+  background-image: var(--gold-foil);
+  opacity: 0;
+  transition: opacity 0.45s ease;
 }
-.btn-gold:hover::before {
-  transform: translateX(130%);
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  color: var(--color-ink);
+  border-color: var(--color-gold-lite);
+}
+.btn-outline:hover::before,
+.btn-outline:focus-visible::before {
+  opacity: 1;
+}
+
+/* Solid foil CTA — used sparingly for the single primary action */
+.btn-foil {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 5px;
+  background-image: var(--gold-foil);
+  color: var(--color-ink);
+  box-shadow: 0 14px 30px -16px rgba(198, 167, 94, 0.55);
+  transition:
+    box-shadow 0.4s ease,
+    transform 0.4s ease;
+}
+.btn-foil:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 38px -16px rgba(198, 167, 94, 0.7);
+}
+
+/* Slow draw-on reveal for terrain / hairlines (one-shot) */
+@keyframes terrain-in {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: var(--terrain-opacity, 0.3);
+    transform: scale(1);
+  }
+}
+.terrain-draw {
+  animation: terrain-in 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn-gold,
-  .btn-gold:hover {
+  .btn-foil,
+  .btn-foil:hover {
     transform: none;
   }
-  .btn-gold::before {
-    display: none;
+  .terrain-draw {
+    animation: none;
+    opacity: var(--terrain-opacity, 0.3);
   }
-}
-
-/* Respect users who prefer reduced motion: kill all non-essential motion */
-@media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {

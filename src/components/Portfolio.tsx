@@ -132,7 +132,7 @@ export default function Portfolio() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionReveal className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <p className="text-xs uppercase tracking-[0.3em] text-gold">Selected Work</p>
+              <p className="eyebrow">Selected Work</p>
               <h2 className="mt-5 font-serif text-4xl font-light leading-tight text-cream sm:text-5xl">
                 A portfolio built on detail.
               </h2>
@@ -160,7 +160,7 @@ export default function Portfolio() {
       <div ref={pinWrap} className="flex h-dvh flex-col justify-center overflow-hidden">
         <div className="mx-auto flex w-full max-w-7xl items-end justify-between gap-6 px-6 pb-10 lg:px-10">
           <div className="max-w-2xl">
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">Selected Work</p>
+            <p className="eyebrow">Selected Work</p>
             <h2 className="mt-5 font-serif text-4xl font-light leading-tight text-cream sm:text-5xl">
               A portfolio built on detail.
             </h2>

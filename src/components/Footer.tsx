@@ -2,26 +2,24 @@ import { navLinks, site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="bg-navy text-ivory/75">
+    <footer className="bg-ink text-beige/75">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
             <a
               href="#top"
-              className="font-serif text-2xl tracking-[0.2em] text-ivory"
+              className="text-foil font-serif text-3xl tracking-[0.18em]"
             >
-              CETUS<span className="text-gold">.</span>
+              CETUS
             </a>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-ivory/60">
+            <p className="mt-5 max-w-xs text-sm leading-[1.75] text-beige-dim">
               {site.tagline} crafting refined residential and commercial
               interiors from concept to completion.
             </p>
           </div>
 
           <div>
-            <h3 className="text-xs uppercase tracking-[0.2em] text-gold">
-              Explore
-            </h3>
+            <h3 className="eyebrow">Explore</h3>
             <ul className="mt-4 space-y-2 text-sm">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -37,9 +35,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs uppercase tracking-[0.2em] text-gold">
-              Studio
-            </h3>
+            <h3 className="eyebrow">Studio</h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
                 <a

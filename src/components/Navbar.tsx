@@ -35,22 +35,20 @@ export default function Navbar() {
       <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
         <a
           href="#top"
-          className="font-serif text-xl tracking-[0.2em] text-cream"
+          className="text-foil font-serif text-2xl tracking-[0.18em]"
           aria-label={`${site.name} home`}
         >
           CETUS
-          <span className="text-gold">.</span>
         </a>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-9 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="group flex items-center gap-2 text-sm tracking-wide text-cream/80 transition-colors hover:text-gold"
+                className="font-cinzel relative text-[12px] uppercase tracking-[0.18em] text-beige/75 transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:text-gold hover:after:w-full"
               >
-            
                 {link.label}
               </a>
             </li>
@@ -59,9 +57,9 @@ export default function Navbar() {
 
         <a
           href="#contact"
-          className="btn-gold hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium md:inline-flex"
+          className="btn-outline font-cinzel hidden items-center gap-2 px-5 py-2.5 text-[11px] uppercase tracking-[0.18em] md:inline-flex"
         >
-          <IconCalendarEvent size={17} stroke={1.7} aria-hidden="true" />
+          <IconCalendarEvent size={16} stroke={1.7} aria-hidden="true" />
           Book a Consultation
         </a>
 
@@ -72,7 +70,7 @@ export default function Navbar() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="-mr-2 inline-flex h-11 w-11 items-center justify-center text-cream md:hidden"
+          className="-mr-2 inline-flex h-11 w-11 items-center justify-center text-beige md:hidden"
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -91,7 +89,7 @@ export default function Navbar() {
               <a
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-3 py-3 text-base text-cream/90 transition-colors hover:text-gold"
+                className="font-cinzel flex items-center gap-3 py-3 text-sm uppercase tracking-[0.18em] text-beige/85 transition-colors hover:text-gold"
               >
                 {link.label}
               </a>
@@ -101,7 +99,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="btn-gold inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium"
+              className="btn-outline font-cinzel inline-flex items-center gap-2 px-5 py-3 text-[11px] uppercase tracking-[0.18em]"
             >
               <IconCalendarEvent size={18} stroke={1.7} aria-hidden="true" />
               Book a Consultation

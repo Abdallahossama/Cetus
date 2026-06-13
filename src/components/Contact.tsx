@@ -57,8 +57,8 @@ export default function Contact() {
   }
 
   const field =
-    "mt-2 w-full rounded-sm border bg-white/80 px-4 py-3 text-cream placeholder-cream/35 transition-colors focus:border-gold focus:outline-none";
-  const border = (err?: string) => (err ? "border-red-500" : "border-navy/15");
+    "mt-2 w-full rounded-sm border bg-navy-2/70 px-4 py-3 text-beige placeholder-beige-dim/55 transition-colors focus:border-gold focus:outline-none";
+  const border = (err?: string) => (err ? "border-red-500" : "border-gold/20");
 
   return (
     <section id="contact" className="bg-velvet grain relative py-20 sm:py-24 lg:py-32">
@@ -66,7 +66,7 @@ export default function Contact() {
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           {/* Intro + details */}
           <div className="flex flex-col justify-center">
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">Let&apos;s Talk</p>
+            <p className="eyebrow">Let&apos;s Talk</p>
             <h2 className="mt-5 font-serif text-3xl font-light leading-tight text-cream sm:text-4xl lg:text-5xl">
               Start the conversation.
             </h2>
@@ -108,7 +108,7 @@ export default function Contact() {
           <form
             noValidate
             onSubmit={handleSubmit}
-            className="rounded-sm border border-gold/25 bg-white/70 p-6 shadow-[0_30px_70px_-40px_rgba(31,42,68,0.45)] backdrop-blur-sm sm:p-8 lg:p-10"
+            className="card-luxe rounded-sm p-6 shadow-[0_30px_70px_-40px_rgba(0,0,0,0.6)] sm:p-8 lg:p-10"
           >
             <h3 className="font-serif text-xl text-cream">Request a consultation</h3>
             <p className="mt-1 text-xs uppercase tracking-[0.2em] text-cream/40">
@@ -231,7 +231,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="btn-gold mt-7 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full px-7 text-sm font-medium disabled:opacity-60 sm:w-auto"
+              className="btn-foil font-cinzel mt-7 inline-flex h-12 w-full items-center justify-center gap-2 px-7 text-[12px] uppercase tracking-[0.18em] disabled:opacity-60 sm:w-auto"
             >
               {status === "submitting" ? (
                 <>

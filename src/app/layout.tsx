@@ -1,15 +1,25 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Cormorant_Garamond, Cinzel, Inter } from "next/font/google";
 import "./globals.css";
 import IntroProvider from "@/components/IntroProvider";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+// Display headlines — editorial serif
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
 });
 
+// Eyebrows / labels / nav — tracked caps
+const cinzel = Cinzel({
+  variable: "--font-cinzel-src",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600"],
+});
+
+// Body / UI
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -36,11 +46,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} h-full`}
+      className={`${cormorant.variable} ${cinzel.variable} ${inter.variable} h-full`}
     >
       <body
         suppressHydrationWarning
-        className="min-h-full flex flex-col bg-ink text-cream antialiased"
+        className="min-h-full flex flex-col bg-ink text-beige antialiased"
       >
         <IntroProvider>{children}</IntroProvider>
       </body>

@@ -116,7 +116,7 @@ export default function ProcessSlides() {
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/40 text-gold">
                   <phase.icon size={20} strokeWidth={1.5} aria-hidden="true" />
                 </span>
-                <span className="text-xs uppercase tracking-[0.3em] text-gold">
+                <span className="eyebrow">
                   {phase.kicker}
                 </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-cream/15 px-3 py-1 text-[11px] tracking-wide text-cream/65">

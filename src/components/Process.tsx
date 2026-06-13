@@ -12,7 +12,7 @@ import ProcessSlides from "./ProcessSlides";
 function Header() {
   return (
     <div className="max-w-2xl">
-      <p className="text-xs uppercase tracking-[0.3em] text-gold">How We Work</p>
+      <p className="eyebrow">How We Work</p>
       <h2 className="mt-5 font-serif text-3xl font-light leading-tight text-cream sm:text-4xl lg:text-5xl">
         Three phases, one seamless journey.
       </h2>
@@ -147,7 +147,7 @@ export default function Process() {
                     <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/40 text-gold">
                       <phase.icon size={20} strokeWidth={1.5} aria-hidden="true" />
                     </span>
-                    <span className="text-xs uppercase tracking-[0.3em] text-gold">
+                    <span className="eyebrow">
                       {phase.no} · {phase.kicker}
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-cream/15 px-3 py-1 text-[11px] tracking-wide text-cream/65">

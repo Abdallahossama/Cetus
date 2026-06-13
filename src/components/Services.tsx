@@ -30,35 +30,33 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="bg-ink py-24 lg:py-32">
+    <section id="services" className="bg-navy py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionReveal className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.3em] text-gold">
-            What We Do
-          </p>
-          <h2 className="mt-5 font-serif text-4xl font-light leading-tight text-cream sm:text-5xl">
+          <p className="eyebrow">What We Do</p>
+          <h2 className="mt-6 font-serif text-4xl font-normal leading-[1.1] text-beige sm:text-5xl">
             A complete interior service.
           </h2>
         </SectionReveal>
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-sm border border-gold/25 bg-gold/25 sm:grid-cols-2">
+        <div className="mt-16 grid gap-px overflow-hidden rounded-sm border border-gold/20 bg-gold/20 sm:grid-cols-2">
           {services.map((service, i) => (
             <SectionReveal
               key={service.title}
               as="article"
               delay={i * 0.08}
-              className="group bg-ink p-8 transition-colors duration-300 hover:bg-sand lg:p-10"
+              className="group bg-navy-2 p-8 transition-colors duration-300 hover:bg-royal/35 lg:p-10"
             >
               <service.icon
-                size={32}
-                strokeWidth={1.5}
+                size={30}
+                strokeWidth={1.4}
                 className="text-gold"
                 aria-hidden="true"
               />
-              <h3 className="mt-6 font-serif text-2xl text-cream">
+              <h3 className="mt-6 font-serif text-2xl text-beige">
                 {service.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-cream/70">
+              <p className="mt-3 text-sm leading-[1.7] text-beige-dim">
                 {service.description}
               </p>
             </SectionReveal>
