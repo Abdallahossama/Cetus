@@ -131,9 +131,9 @@ export default function Portfolio() {
     return (
       <section id="portfolio" ref={section} className="relative overflow-hidden bg-ink py-24 lg:py-32">
         <Terrain
-          variant="hero"
-          opacity={0.28}
-          className="[mask-image:linear-gradient(to_top,black_25%,transparent_85%)]"
+          variant="texture"
+          opacity={0.5}
+          className="[mask-image:linear-gradient(to_top,black_70%,transparent_100%)]"
         />
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
           <SectionReveal className="flex flex-wrap items-end justify-between gap-6">
@@ -165,9 +165,9 @@ export default function Portfolio() {
     <section id="portfolio" ref={section} className="relative bg-ink">
       <div ref={pinWrap} className="relative flex h-dvh flex-col justify-center overflow-hidden">
         <Terrain
-          variant="hero"
-          opacity={0.28}
-          className="[mask-image:linear-gradient(to_top,black_25%,transparent_85%)]"
+          variant="texture"
+          opacity={0.5}
+          className="[mask-image:linear-gradient(to_top,black_70%,transparent_100%)]"
         />
         <div className="relative z-10 mx-auto flex w-full max-w-7xl items-end justify-between gap-6 px-6 pb-10 lg:px-10">
           <div className="max-w-2xl">
