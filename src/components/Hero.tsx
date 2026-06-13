@@ -24,6 +24,44 @@ const Scene = dynamic(() => import("./three/Scene"), { ssr: false });
 const LUXURY_IMG =
   "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1100&q=80";
 
+// Floating credential badges that hover around the 3D room.
+const STAT_BADGES = [
+  {
+    value: "12",
+    suffix: "+",
+    line1: "Years of",
+    line2: "crafting interiors",
+    className: "right-1 top-3 lg:right-3",
+    depth: 22,
+    delay: 0.5,
+  },
+  {
+    value: "180",
+    line1: "Projects",
+    line2: "delivered",
+    className: "left-0 top-[30%] lg:-left-3",
+    depth: 32,
+    delay: 0.62,
+  },
+  {
+    value: "98",
+    suffix: "%",
+    line1: "Client",
+    line2: "satisfaction",
+    className: "left-0 top-[64%] lg:-left-2",
+    depth: 24,
+    delay: 0.74,
+  },
+  {
+    value: "9",
+    line1: "Design",
+    line2: "awards",
+    className: "bottom-5 right-3 lg:right-6",
+    depth: 16,
+    delay: 0.86,
+  },
+] as const;
+
 // Gallery-wall photos that float as a framed backdrop behind the 3D room.
 // `depth` drives how strongly each reacts to the cursor — bigger = closer.
 const BACKDROP_FRAMES = [
@@ -87,8 +125,6 @@ export default function Hero() {
   const cfg = { stiffness: 150, damping: 18, mass: 0.4 };
   const rotX = useSpring(useTransform(my, [-0.5, 0.5], [8, -8]), cfg);
   const rotY = useSpring(useTransform(mx, [-0.5, 0.5], [-10, 10]), cfg);
-  const badgeX = useSpring(useTransform(mx, [-0.5, 0.5], [20, -20]), cfg);
-  const badgeY = useSpring(useTransform(my, [-0.5, 0.5], [16, -16]), cfg);
 
   function handleMouse(e: React.MouseEvent<HTMLDivElement>) {
     if (reduceMotion) return;
@@ -218,39 +254,17 @@ export default function Hero() {
             </div>
           )}
 
-          {/* Floating experience badge */}
-          <motion.div
-            style={reduceMotion ? undefined : { x: badgeX, y: badgeY }}
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: done ? 1 : 0, y: done ? 0 : -12 }}
-            transition={{ duration: 0.8, ease, delay: 0.5 }}
-            className="absolute right-2 top-4 z-20 hidden sm:block lg:right-4"
-          >
-            <div className="relative overflow-hidden rounded-lg border border-gold/30 bg-gradient-to-br from-navy/95 to-ink/90 px-3 py-2 shadow-[0_16px_36px_-18px_rgba(0,0,0,0.95),0_0_26px_-12px_rgba(198,167,94,0.45)] backdrop-blur-xl">
-              {/* Soft gold glow in the corner */}
-              <div className="pointer-events-none absolute -right-5 -top-5 h-12 w-12 rounded-full bg-gold/25 blur-xl" />
-              {/* Top hairline accent */}
-              <div className="pointer-events-none absolute inset-x-2 top-0 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
-
-              <div className="relative flex items-center gap-2">
-                <div className="flex items-baseline">
-                  <span className="font-serif text-2xl leading-none text-gold [text-shadow:0_2px_14px_rgba(198,167,94,0.45)]">
-                    12
-                  </span>
-                  <span className="font-serif text-sm leading-none text-gold/75">+</span>
-                </div>
-                <span className="h-6 w-px bg-gradient-to-b from-transparent via-gold/55 to-transparent" />
-                <div className="leading-tight">
-                  <p className="text-[9px] font-medium uppercase tracking-[0.18em] text-cream">
-                    Years of
-                  </p>
-                  <p className="text-[9px] uppercase tracking-[0.18em] text-cream/55">
-                    crafting interiors
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          {/* Floating credential badges */}
+          {STAT_BADGES.map((badge) => (
+            <StatBadge
+              key={badge.line2}
+              badge={badge}
+              mx={mx}
+              my={my}
+              reduceMotion={!!reduceMotion}
+              show={done}
+            />
+          ))}
 
           {/* Animated arrow pointing at the 3D room */}
           {show3D && (
@@ -314,6 +328,62 @@ function BackdropFrame({
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/45 via-transparent to-gold/5" />
         </div>
       </motion.div>
+    </motion.div>
+  );
+}
+
+/** A small premium credential badge that floats and parallaxes around the 3D room. */
+function StatBadge({
+  badge,
+  mx,
+  my,
+  reduceMotion,
+  show,
+}: {
+  badge: (typeof STAT_BADGES)[number];
+  mx: MotionValue<number>;
+  my: MotionValue<number>;
+  reduceMotion: boolean;
+  show: boolean;
+}) {
+  const cfg = { stiffness: 150, damping: 18, mass: 0.4 };
+  const x = useSpring(useTransform(mx, [-0.5, 0.5], [badge.depth, -badge.depth]), cfg);
+  const y = useSpring(useTransform(my, [-0.5, 0.5], [badge.depth * 0.8, -badge.depth * 0.8]), cfg);
+
+  return (
+    <motion.div
+      style={reduceMotion ? undefined : { x, y }}
+      initial={{ opacity: 0, y: -12 }}
+      animate={{ opacity: show ? 1 : 0, y: show ? 0 : -12 }}
+      transition={{ duration: 0.8, ease, delay: badge.delay }}
+      className={`absolute z-20 hidden sm:block ${badge.className}`}
+    >
+      <div className="relative overflow-hidden rounded-lg border border-gold/30 bg-gradient-to-br from-navy/95 to-ink/90 px-3 py-2 shadow-[0_16px_36px_-18px_rgba(0,0,0,0.95),0_0_26px_-12px_rgba(198,167,94,0.45)] backdrop-blur-xl">
+        {/* Soft gold glow in the corner */}
+        <div className="pointer-events-none absolute -right-5 -top-5 h-12 w-12 rounded-full bg-gold/25 blur-xl" />
+        {/* Top hairline accent */}
+        <div className="pointer-events-none absolute inset-x-2 top-0 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
+
+        <div className="relative flex items-center gap-2">
+          <div className="flex items-baseline">
+            <span className="font-serif text-2xl leading-none text-gold [text-shadow:0_2px_14px_rgba(198,167,94,0.45)]">
+              {badge.value}
+            </span>
+            {"suffix" in badge && badge.suffix && (
+              <span className="font-serif text-sm leading-none text-gold/75">{badge.suffix}</span>
+            )}
+          </div>
+          <span className="h-6 w-px bg-gradient-to-b from-transparent via-gold/55 to-transparent" />
+          <div className="leading-tight">
+            <p className="text-[9px] font-medium uppercase tracking-[0.18em] text-cream">
+              {badge.line1}
+            </p>
+            <p className="text-[9px] uppercase tracking-[0.18em] text-cream/55">
+              {badge.line2}
+            </p>
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
-import { Check } from "lucide-react";
+import { Check, Clock, PackageCheck } from "lucide-react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { phases } from "@/lib/process";
 import { useIsDesktop, usePrefersReducedMotion } from "@/lib/useMediaQuery";
@@ -16,6 +16,11 @@ function Header() {
       <h2 className="mt-5 font-serif text-3xl font-light leading-tight text-cream sm:text-4xl lg:text-5xl">
         Three phases, one seamless journey.
       </h2>
+      <p className="mt-5 max-w-xl text-sm leading-relaxed text-cream/70 sm:text-base">
+        A clear, collaborative path from first conversation to finished room —
+        with a single point of contact, transparent budgets and no surprises at
+        any stage.
+      </p>
     </div>
   );
 }
@@ -136,12 +141,16 @@ export default function Process() {
                     i === 0 ? "" : "opacity-0"
                   }`}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-3">
                     <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/40 text-gold">
                       <phase.icon size={20} strokeWidth={1.5} aria-hidden="true" />
                     </span>
                     <span className="text-xs uppercase tracking-[0.3em] text-gold">
                       {phase.no} · {phase.kicker}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-cream/15 px-3 py-1 text-[11px] tracking-wide text-cream/65">
+                      <Clock size={12} className="text-gold" aria-hidden="true" />
+                      {phase.duration}
                     </span>
                   </div>
                   <h3 className="font-serif text-3xl font-light text-cream sm:text-4xl">
@@ -150,7 +159,7 @@ export default function Process() {
                   <p className="max-w-md text-sm leading-relaxed text-cream/70 sm:text-base">
                     {phase.description}
                   </p>
-                  <ul className="mt-1 space-y-3">
+                  <ul className="mt-1 grid gap-3 sm:grid-cols-2">
                     {phase.steps.map((s) => (
                       <li key={s} className="flex items-center gap-3 text-sm text-cream/85">
                         <Check size={16} className="shrink-0 text-gold" aria-hidden="true" />
@@ -158,6 +167,13 @@ export default function Process() {
                       </li>
                     ))}
                   </ul>
+                  <p className="mt-1 flex items-start gap-2.5 border-l-2 border-gold/40 pl-3 text-sm text-cream/70">
+                    <PackageCheck size={16} className="mt-0.5 shrink-0 text-gold" aria-hidden="true" />
+                    <span>
+                      <span className="text-cream/50">You receive: </span>
+                      {phase.deliverable}
+                    </span>
+                  </p>
                 </div>
               ))}
             </div>

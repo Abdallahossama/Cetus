@@ -7,7 +7,7 @@ import {
   useReducedMotion,
   type PanInfo,
 } from "framer-motion";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Clock, PackageCheck } from "lucide-react";
 import { phases } from "@/lib/process";
 
 const AUTOPLAY_MS = 6500;
@@ -112,12 +112,16 @@ export default function ProcessSlides() {
             </div>
 
             <div className="flex flex-col justify-center gap-5 p-8 sm:p-12">
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/40 text-gold">
                   <phase.icon size={20} strokeWidth={1.5} aria-hidden="true" />
                 </span>
                 <span className="text-xs uppercase tracking-[0.3em] text-gold">
                   {phase.kicker}
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-cream/15 px-3 py-1 text-[11px] tracking-wide text-cream/65">
+                  <Clock size={12} className="text-gold" aria-hidden="true" />
+                  {phase.duration}
                 </span>
               </div>
               <h3 className="font-serif text-3xl font-light text-cream sm:text-4xl">
@@ -134,6 +138,13 @@ export default function ProcessSlides() {
                   </li>
                 ))}
               </ul>
+              <p className="mt-1 flex items-start gap-2.5 border-l-2 border-gold/40 pl-3 text-sm text-cream/70">
+                <PackageCheck size={16} className="mt-0.5 shrink-0 text-gold" aria-hidden="true" />
+                <span>
+                  <span className="text-cream/50">You receive: </span>
+                  {phase.deliverable}
+                </span>
+              </p>
             </div>
           </motion.div>
         </AnimatePresence>
