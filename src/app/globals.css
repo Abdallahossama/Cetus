@@ -111,6 +111,13 @@
   color: transparent;
 }
 
+/* fixed background attachment is a known scroll-jank source on phones */
+@media (max-width: 767px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
 /* ----------------------------------------------------------------
    Luxury CTA — gold gradient pill with sheen sweep + soft lift
 ----------------------------------------------------------------- */

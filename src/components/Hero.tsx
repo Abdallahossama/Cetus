@@ -9,6 +9,7 @@ import {
   useMotionValue,
   useSpring,
   useReducedMotion,
+  useInView,
   type Variants,
   type MotionValue,
 } from "framer-motion";
@@ -109,6 +110,10 @@ export default function Hero() {
   useEffect(() => setMounted(true), []);
   // Drag-to-rotate only with a real pointer (so touch scroll isn't trapped).
   const pointerFine = useMediaQuery("(pointer: fine)");
+  // Phones run the 3D in a lighter, smaller, low-power mode.
+  const isMobile = useMediaQuery("(max-width: 767px)");
+  // Pause the WebGL render loop once the hero scrolls out of view.
+  const heroInView = useInView(sectionRef, { amount: 0.15 });
 
   /* Scroll-driven parallax */
   const { scrollYProgress } = useScroll({
@@ -211,7 +216,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: done ? 1 : 0 }}
           transition={{ duration: 1, ease, delay: 0.1 }}
-          className="relative mx-auto aspect-[4/5] w-full max-w-sm sm:max-w-md lg:aspect-[4/3] lg:max-w-none"
+          className="relative mx-auto aspect-square w-full max-w-[15rem] sm:aspect-[4/5] sm:max-w-md lg:aspect-[4/3] lg:max-w-none"
           onMouseMove={handleMouse}
           onMouseLeave={resetMouse}
         >
@@ -231,6 +236,8 @@ export default function Hero() {
               <SceneBoundary fallback={null}>
                 <Scene
                   controls={pointerFine}
+                  lite={isMobile}
+                  active={heroInView}
                   className={pointerFine ? "cursor-grab active:cursor-grabbing" : undefined}
                 />
               </SceneBoundary>
@@ -360,27 +367,29 @@ function StatBadge({
       transition={{ duration: 0.8, ease, delay: badge.delay }}
       className={`absolute z-20 ${badge.className}`}
     >
-      <div className="relative overflow-hidden rounded-lg border border-gold/40 bg-gradient-to-br from-white/90 to-sand/80 px-3 py-2 shadow-[0_16px_34px_-18px_rgba(31,42,68,0.4),0_0_24px_-14px_rgba(176,138,62,0.55)] backdrop-blur-xl">
+      <div className="relative overflow-hidden rounded-md border border-gold/40 bg-gradient-to-br from-white/90 to-sand/80 px-1.5 py-1 shadow-[0_16px_34px_-18px_rgba(31,42,68,0.4),0_0_24px_-14px_rgba(176,138,62,0.55)] backdrop-blur-xl sm:rounded-lg sm:px-3 sm:py-2">
         {/* Soft gold glow in the corner */}
-        <div className="pointer-events-none absolute -right-5 -top-5 h-12 w-12 rounded-full bg-gold/25 blur-xl" />
+        <div className="pointer-events-none absolute -right-4 -top-4 h-9 w-9 rounded-full bg-gold/25 blur-lg sm:-right-5 sm:-top-5 sm:h-12 sm:w-12 sm:blur-xl" />
         {/* Top hairline accent */}
         <div className="pointer-events-none absolute inset-x-2 top-0 h-px bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
 
-        <div className="relative flex items-center gap-2">
+        <div className="relative flex items-center gap-1.5 sm:gap-2">
           <div className="flex items-baseline">
-            <span className="font-serif text-2xl leading-none text-gold">
+            <span className="font-serif text-base leading-none text-gold sm:text-2xl">
               {badge.value}
             </span>
             {"suffix" in badge && badge.suffix && (
-              <span className="font-serif text-sm leading-none text-gold/75">{badge.suffix}</span>
+              <span className="font-serif text-[10px] leading-none text-gold/75 sm:text-sm">
+                {badge.suffix}
+              </span>
             )}
           </div>
-          <span className="h-6 w-px bg-gradient-to-b from-transparent via-gold/55 to-transparent" />
+          <span className="h-4 w-px bg-gradient-to-b from-transparent via-gold/55 to-transparent sm:h-6" />
           <div className="leading-tight">
-            <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-navy">
+            <p className="text-[7px] font-semibold uppercase tracking-[0.16em] text-navy sm:text-[9px] sm:tracking-[0.18em]">
               {badge.line1}
             </p>
-            <p className="text-[9px] uppercase tracking-[0.18em] text-navy/60">
+            <p className="text-[7px] uppercase tracking-[0.16em] text-navy/60 sm:text-[9px] sm:tracking-[0.18em]">
               {badge.line2}
             </p>
           </div>
