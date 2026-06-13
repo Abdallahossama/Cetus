@@ -80,8 +80,8 @@ function Card({ p, className = "" }: { p: Project; className?: string }) {
       </div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/10 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 p-6">
-        <p className="text-[11px] uppercase tracking-[0.2em] text-gold">{p.tag}</p>
-        <h3 className="mt-1 font-serif text-xl text-cream">{p.title}</h3>
+        <p className="text-[11px] uppercase tracking-[0.2em] text-gold-soft">{p.tag}</p>
+        <h3 className="mt-1 font-serif text-xl text-ivory">{p.title}</h3>
       </div>
     </article>
   );

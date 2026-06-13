@@ -20,7 +20,7 @@ export default function About() {
               className="aspect-[4/5] rounded-sm bg-ink"
               amount={50}
             />
-            <div className="absolute -bottom-6 -right-6 hidden rounded-sm border border-gold/40 bg-navy/80 px-6 py-5 backdrop-blur-sm sm:block">
+            <div className="absolute -bottom-6 -right-6 hidden rounded-sm border border-gold/40 bg-white/85 px-6 py-5 shadow-[0_22px_50px_-26px_rgba(31,42,68,0.45)] backdrop-blur-sm sm:block">
               <p className="font-serif text-2xl text-gold">Cetus</p>
               <p className="text-xs uppercase tracking-[0.2em] text-cream/60">
                 Est. 2013

@@ -28,7 +28,7 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled || open
-          ? "bg-navy/90 backdrop-blur-md border-b border-gold/15"
+          ? "bg-ink/85 backdrop-blur-md border-b border-gold/20 shadow-[0_8px_30px_-18px_rgba(31,42,68,0.35)]"
           : "bg-transparent"
       }`}
     >
@@ -59,7 +59,7 @@ export default function Navbar() {
 
         <a
           href="#contact"
-          className="hidden items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-navy transition-colors hover:bg-gold-soft md:inline-flex"
+          className="btn-gold hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium md:inline-flex"
         >
           <IconCalendarEvent size={17} stroke={1.7} aria-hidden="true" />
           Book a Consultation
@@ -81,7 +81,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div
         id="mobile-menu"
-        className={`overflow-hidden border-t border-gold/10 bg-navy/95 backdrop-blur-md transition-[max-height] duration-300 md:hidden ${
+        className={`overflow-hidden border-t border-gold/15 bg-ink/95 backdrop-blur-md transition-[max-height] duration-300 md:hidden ${
           open ? "max-h-96" : "max-h-0"
         }`}
       >
@@ -101,7 +101,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-medium text-navy"
+              className="btn-gold inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium"
             >
               <IconCalendarEvent size={18} stroke={1.7} aria-hidden="true" />
               Book a Consultation

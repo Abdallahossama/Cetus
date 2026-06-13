@@ -2,17 +2,17 @@ import { navLinks, site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-cream/80">
+    <footer className="bg-navy text-ivory/75">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
             <a
               href="#top"
-              className="font-serif text-2xl tracking-[0.2em] text-cream"
+              className="font-serif text-2xl tracking-[0.2em] text-ivory"
             >
               CETUS<span className="text-gold">.</span>
             </a>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/60">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-ivory/60">
               {site.tagline} crafting refined residential and commercial
               interiors from concept to completion.
             </p>
@@ -50,7 +50,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>{site.phone}</li>
-              <li className="text-cream/60">{site.address}</li>
+              <li className="text-ivory/60">{site.address}</li>
             </ul>
             <ul className="mt-5 flex gap-4 text-sm">
               {site.socials.map((s) => (
@@ -68,7 +68,7 @@ export default function Footer() {
         </div>
 
         <div className="hairline mt-12" />
-        <p className="mt-6 text-xs text-cream/50">
+        <p className="mt-6 text-xs text-ivory/50">
           © {new Date().getFullYear()} {site.name}. All rights reserved.
         </p>
       </div>

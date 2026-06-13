@@ -150,7 +150,7 @@ export default function Hero() {
       {/* Background photo on the left, gradient-fading into the velvet bg on the right */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-45"
+          className="absolute inset-0 bg-cover bg-center opacity-25"
           style={{
             backgroundImage: `url(${LUXURY_IMG})`,
             maskImage:
@@ -159,13 +159,13 @@ export default function Hero() {
               "linear-gradient(to right, black 0%, black 30%, transparent 68%)",
           }}
         />
-        {/* Tint for legibility + blend into navy */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/80 via-navy/45 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-navy/40" />
+        {/* Ivory wash for legibility — keeps dark copy crisp over the photo */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-ink/40" />
       </div>
 
-      <KintsugiVeins opacity={0.45} />
-      <div className="pointer-events-none absolute left-[55%] top-1/2 h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/12 blur-[130px]" />
+      <KintsugiVeins opacity={0.3} />
+      <div className="pointer-events-none absolute left-[55%] top-1/2 h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/15 blur-[130px]" />
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-6 lg:px-10">
         {/* ---------- Copy ---------- */}
@@ -191,13 +191,13 @@ export default function Hero() {
             <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
               <a
                 href="#contact"
-                className="rounded-full bg-gold px-7 py-3.5 text-sm font-medium text-navy transition-colors hover:bg-gold-soft"
+                className="btn-gold rounded-full px-7 py-3.5 text-sm font-medium"
               >
                 Book a Consultation
               </a>
               <a
                 href="#portfolio"
-                className="rounded-full border border-cream/25 px-7 py-3.5 text-sm font-medium text-cream transition-colors hover:border-gold hover:text-gold"
+                className="rounded-full border border-navy/25 px-7 py-3.5 text-sm font-medium text-navy transition-colors hover:border-gold hover:text-gold"
               >
                 View Our Work
               </a>
@@ -322,12 +322,12 @@ function BackdropFrame({
       <motion.div
         animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: frame.delay }}
-        className="overflow-hidden rounded-sm border border-gold/30 bg-navy/60 p-1 shadow-[0_24px_50px_-28px_rgba(0,0,0,0.85)] backdrop-blur-[1px]"
+        className="overflow-hidden rounded-sm border border-gold/30 bg-white/70 p-1.5 shadow-[0_24px_50px_-30px_rgba(31,42,68,0.5)] backdrop-blur-[1px]"
       >
         <div className="relative overflow-hidden rounded-[1px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={frame.src} alt={frame.alt} className="aspect-[4/5] w-full object-cover opacity-75" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/45 via-transparent to-gold/5" />
+          <img src={frame.src} alt={frame.alt} className="aspect-[4/5] w-full object-cover opacity-85" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/25 via-transparent to-transparent" />
         </div>
       </motion.div>
     </motion.div>
@@ -360,15 +360,15 @@ function StatBadge({
       transition={{ duration: 0.8, ease, delay: badge.delay }}
       className={`absolute z-20 hidden sm:block ${badge.className}`}
     >
-      <div className="relative overflow-hidden rounded-lg border border-gold/30 bg-gradient-to-br from-navy/95 to-ink/90 px-3 py-2 shadow-[0_16px_36px_-18px_rgba(0,0,0,0.95),0_0_26px_-12px_rgba(198,167,94,0.45)] backdrop-blur-xl">
+      <div className="relative overflow-hidden rounded-lg border border-gold/40 bg-gradient-to-br from-white/90 to-sand/80 px-3 py-2 shadow-[0_16px_34px_-18px_rgba(31,42,68,0.4),0_0_24px_-14px_rgba(176,138,62,0.55)] backdrop-blur-xl">
         {/* Soft gold glow in the corner */}
         <div className="pointer-events-none absolute -right-5 -top-5 h-12 w-12 rounded-full bg-gold/25 blur-xl" />
         {/* Top hairline accent */}
-        <div className="pointer-events-none absolute inset-x-2 top-0 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-2 top-0 h-px bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
 
         <div className="relative flex items-center gap-2">
           <div className="flex items-baseline">
-            <span className="font-serif text-2xl leading-none text-gold [text-shadow:0_2px_14px_rgba(198,167,94,0.45)]">
+            <span className="font-serif text-2xl leading-none text-gold">
               {badge.value}
             </span>
             {"suffix" in badge && badge.suffix && (
@@ -377,10 +377,10 @@ function StatBadge({
           </div>
           <span className="h-6 w-px bg-gradient-to-b from-transparent via-gold/55 to-transparent" />
           <div className="leading-tight">
-            <p className="text-[9px] font-medium uppercase tracking-[0.18em] text-cream">
+            <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-navy">
               {badge.line1}
             </p>
-            <p className="text-[9px] uppercase tracking-[0.18em] text-cream/55">
+            <p className="text-[9px] uppercase tracking-[0.18em] text-navy/60">
               {badge.line2}
             </p>
           </div>

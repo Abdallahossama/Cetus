@@ -41,13 +41,13 @@ export default function Services() {
           </h2>
         </SectionReveal>
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-sm border border-gold/15 bg-gold/15 sm:grid-cols-2">
+        <div className="mt-16 grid gap-px overflow-hidden rounded-sm border border-gold/25 bg-gold/25 sm:grid-cols-2">
           {services.map((service, i) => (
             <SectionReveal
               key={service.title}
               as="article"
               delay={i * 0.08}
-              className="group bg-ink p-8 transition-colors duration-300 hover:bg-navy lg:p-10"
+              className="group bg-ink p-8 transition-colors duration-300 hover:bg-sand lg:p-10"
             >
               <service.icon
                 size={32}

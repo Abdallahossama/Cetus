@@ -40,7 +40,7 @@ export default function RootLayout({
     >
       <body
         suppressHydrationWarning
-        className="min-h-full flex flex-col bg-navy text-cream antialiased"
+        className="min-h-full flex flex-col bg-ink text-cream antialiased"
       >
         <IntroProvider>{children}</IntroProvider>
       </body>

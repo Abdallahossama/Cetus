@@ -57,8 +57,8 @@ export default function Contact() {
   }
 
   const field =
-    "mt-2 w-full rounded-sm border bg-navy/70 px-4 py-3 text-cream placeholder-cream/30 transition-colors focus:border-gold focus:outline-none";
-  const border = (err?: string) => (err ? "border-red-400" : "border-cream/15");
+    "mt-2 w-full rounded-sm border bg-white/80 px-4 py-3 text-cream placeholder-cream/35 transition-colors focus:border-gold focus:outline-none";
+  const border = (err?: string) => (err ? "border-red-500" : "border-navy/15");
 
   return (
     <section id="contact" className="bg-velvet grain relative py-20 sm:py-24 lg:py-32">
@@ -108,7 +108,7 @@ export default function Contact() {
           <form
             noValidate
             onSubmit={handleSubmit}
-            className="rounded-sm border border-gold/20 bg-ink/60 p-6 backdrop-blur-sm sm:p-8 lg:p-10"
+            className="rounded-sm border border-gold/25 bg-white/70 p-6 shadow-[0_30px_70px_-40px_rgba(31,42,68,0.45)] backdrop-blur-sm sm:p-8 lg:p-10"
           >
             <h3 className="font-serif text-xl text-cream">Request a consultation</h3>
             <p className="mt-1 text-xs uppercase tracking-[0.2em] text-cream/40">
@@ -189,7 +189,7 @@ export default function Contact() {
                       Select…
                     </option>
                     {projectTypes.map((t) => (
-                      <option key={t} value={t} className="bg-navy text-cream">
+                      <option key={t} value={t} className="bg-ink text-cream">
                         {t}
                       </option>
                     ))}
@@ -231,7 +231,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="mt-7 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-gold px-7 text-sm font-medium text-navy transition-colors hover:bg-gold-soft disabled:opacity-60 sm:w-auto"
+              className="btn-gold mt-7 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full px-7 text-sm font-medium disabled:opacity-60 sm:w-auto"
             >
               {status === "submitting" ? (
                 <>
