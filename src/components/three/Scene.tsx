@@ -22,7 +22,7 @@ type Props = {
 };
 
 const BASE_AZIMUTH = Math.PI / 4; // camera starts at the open front corner
-const SWAY = 0.45; // how far it drifts each way (radians)
+const SWAY = 0.36; // how far it drifts each way (radians) — kept off the frame edge
 
 type OrbitLike = {
   getAzimuthalAngle(): number;
@@ -83,7 +83,7 @@ export default function Scene({
         alpha: true,
         powerPreference: lite ? "default" : "high-performance",
       }}
-      camera={{ position: [8, 7, 8], zoom: lite ? 40 : 62, near: 0.1, far: 100 }}
+      camera={{ position: [8, 7, 8], zoom: lite ? 40 : 52, near: 0.1, far: 100 }}
       onCreated={({ camera }) => camera.lookAt(0, 0.6, 0)}
     >
       <ambientLight intensity={lite ? 0.75 : 0.55} />
@@ -116,8 +116,8 @@ export default function Scene({
             dampingFactor={0.08}
             minPolarAngle={0.85}
             maxPolarAngle={1.2}
-            minAzimuthAngle={BASE_AZIMUTH - 0.6}
-            maxAzimuthAngle={BASE_AZIMUTH + 0.6}
+            minAzimuthAngle={BASE_AZIMUTH - 0.45}
+            maxAzimuthAngle={BASE_AZIMUTH + 0.45}
           />
           <AutoSway />
         </>

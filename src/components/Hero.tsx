@@ -32,7 +32,7 @@ const STAT_BADGES = [
     suffix: "+",
     line1: "Years of",
     line2: "crafting interiors",
-    className: "right-1 top-3 lg:right-3",
+    className: "right-1 top-3 lg:-right-7 lg:top-1",
     depth: 22,
     delay: 0.5,
   },
@@ -40,7 +40,7 @@ const STAT_BADGES = [
     value: "180",
     line1: "Projects",
     line2: "delivered",
-    className: "left-0 top-[30%] lg:-left-3",
+    className: "left-0 top-[30%] lg:-left-10",
     depth: 32,
     delay: 0.62,
   },
@@ -49,7 +49,7 @@ const STAT_BADGES = [
     suffix: "%",
     line1: "Client",
     line2: "satisfaction",
-    className: "left-0 top-[64%] lg:-left-2",
+    className: "left-0 top-[64%] lg:-left-9",
     depth: 24,
     delay: 0.74,
   },
@@ -57,7 +57,7 @@ const STAT_BADGES = [
     value: "9",
     line1: "Design",
     line2: "awards",
-    className: "bottom-5 right-3 lg:right-6",
+    className: "bottom-5 right-3 lg:-right-6 lg:bottom-3",
     depth: 16,
     delay: 0.86,
   },
@@ -69,21 +69,21 @@ const BACKDROP_FRAMES = [
   {
     src: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=520&q=70",
     alt: "Minimal living room with floor-to-ceiling windows",
-    className: "left-[-5%] top-[2%] w-[26%] rotate-[-7deg]",
+    className: "left-[-5%] top-[2%] w-[26%] rotate-[-7deg] lg:left-[-13%] lg:top-[0%]",
     depth: 26,
     delay: 0.2,
   },
   {
     src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=520&q=70",
     alt: "Elegant living room with sofa and warm lighting",
-    className: "right-[0%] top-[10%] w-[22%] rotate-[6deg]",
+    className: "right-[0%] top-[10%] w-[22%] rotate-[6deg] lg:right-[-10%]",
     depth: 16,
     delay: 0.32,
   },
   {
     src: "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=520&q=70",
     alt: "Elegant bedroom with layered textiles and soft lighting",
-    className: "bottom-[3%] left-[7%] w-[24%] rotate-[4deg]",
+    className: "bottom-[3%] left-[7%] w-[24%] rotate-[4deg] lg:left-[-3%]",
     depth: 21,
     delay: 0.44,
   },
@@ -240,8 +240,9 @@ export default function Hero() {
             </div>
           )}
 
-          {/* WebGL interior vignette (≥768px) */}
-          <div className="absolute inset-0 z-[1]">
+          {/* WebGL interior vignette (≥768px) — clipped to its own box so the
+              swaying room never spills past the div edge. */}
+          <div className="absolute inset-0 z-[1] overflow-hidden">
             <div className="pointer-events-none absolute left-1/2 top-1/2 h-2/3 w-2/3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/20 blur-3xl" />
             {show3D && (
               <SceneBoundary fallback={null}>

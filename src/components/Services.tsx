@@ -31,7 +31,7 @@ const services = [
 export default function Services() {
   return (
     <section id="services" className="bg-navy py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 xl:max-w-[88rem]">
         <SectionReveal className="max-w-2xl">
           <p className="eyebrow">What We Do</p>
           <h2 className="mt-6 font-serif text-4xl font-normal leading-[1.1] text-beige sm:text-5xl">

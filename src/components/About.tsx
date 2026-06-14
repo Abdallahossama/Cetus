@@ -13,7 +13,7 @@ export default function About() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           {/* Editorial image */}
-          <SectionReveal className="relative">
+          <SectionReveal className="relative order-2 lg:order-1">
             <ParallaxImage
               src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1100&q=80"
               alt="A softly lit living room with layered neutral textures and brass accents"
@@ -29,7 +29,7 @@ export default function About() {
           </SectionReveal>
 
           {/* Copy */}
-          <SectionReveal className="flex flex-col justify-center" delay={0.1}>
+          <SectionReveal className="order-1 flex flex-col justify-center lg:order-2" delay={0.1}>
             <p className="eyebrow">The Studio</p>
             <h2 className="mt-6 font-serif text-4xl font-normal leading-[1.1] text-beige sm:text-5xl">
               We design interiors that feel inevitable.
