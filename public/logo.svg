@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" role="img" aria-label="Cetus Design">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9c7c3c"/>
+      <stop offset=".45" stop-color="#e6c77e"/>
+      <stop offset="1" stop-color="#c6a75e"/>
+    </linearGradient>
+  </defs>
+  <!-- Sparkle mark -->
+  <path fill="url(#gold)" transform="translate(8 32) scale(0.1875)"
+        d="M256 86C272 214 298 240 426 256 298 272 272 298 256 426 240 298 214 272 86 256 214 240 240 214 256 86Z"/>
+  <!-- Wordmark -->
+  <text x="116" y="92" font-family="'Cinzel','Cormorant Garamond',Georgia,serif"
+        font-size="64" font-weight="600" letter-spacing="14" fill="url(#gold)">CETUS</text>
+  <text x="118" y="124" font-family="'Cinzel',Georgia,serif" font-size="17"
+        letter-spacing="7" fill="#b9b19e">INTERIOR DESIGN STUDIO</text>
+</svg>
