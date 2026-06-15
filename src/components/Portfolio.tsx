@@ -9,58 +9,64 @@ import Terrain from "./Terrain";
 
 const projects = [
   {
-    title: "Harbour Penthouse",
+    title: "Azure Mediterranean",
+    tag: "Restaurant",
+    img: "/Business/IMG_1674.JPG",
+    alt: "Fine-dining restaurant with blue-and-white tile arches, marble floors and velvet chairs",
+  },
+  {
+    title: "Maison Café",
+    tag: "Café",
+    img: "/Business/IMG_1703.JPG",
+    alt: "Minimalist café in warm plaster tones with timber tables and a tasselled chandelier",
+  },
+  {
+    title: "Lumière Patisserie",
+    tag: "Bakery",
+    img: "/Business/IMG_1704.JPG",
+    alt: "Artisan patisserie with a draped fabric ceiling, stone counter and warm gold lighting",
+  },
+  {
+    title: "Belle Époque Lounge",
+    tag: "Lounge",
+    img: "/Business/IMG_1705.JPG",
+    alt: "Dramatic rooftop lounge with magenta arches, patterned walls and city views",
+  },
+  {
+    title: "Botanica Private Dining",
+    tag: "Restaurant",
+    img: "/Business/IMG_1679.JPG",
+    alt: "Intimate private dining room with a folk-art mural, rattan pendants and tan chairs",
+  },
+  {
+    title: "Verbena Tea Room",
+    tag: "Café",
+    img: "/Business/IMG_1708.JPG",
+    alt: "Playful pastel tea room in pink and mint with checkerboard floor and lush plants",
+  },
+  {
+    title: "Concept Residence",
     tag: "Residential",
-    img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80",
-    alt: "Minimal penthouse living room with floor-to-ceiling windows",
+    img: "/Residential/IMG_1671.JPG",
+    alt: "Living room shown half as a technical concept drawing and half as a finished render",
   },
   {
-    title: "Lumen Café",
-    tag: "Hospitality",
-    img: "https://images.unsplash.com/photo-1559329007-40df8a9345d8?auto=format&fit=crop&w=1000&q=80",
-    alt: "Warm café interior with timber seating and pendant lighting",
+    title: "Aqua Wellness Suite",
+    tag: "Wellness",
+    img: "/Residential/IMG_1683.JPG",
+    alt: "Private wellness suite with a sunken spa pool, timber deck and a cinema screen",
   },
   {
-    title: "Atelier Offices",
-    tag: "Workplace",
-    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80",
-    alt: "Bright open-plan office with neutral furniture and greenery",
+    title: "Foundry Loft",
+    tag: "Loft",
+    img: "/Residential/IMG_1685.JPG",
+    alt: "Industrial double-height loft with a mezzanine, exposed brick and a teal modular sofa",
   },
   {
-    title: "Crescent Townhouse",
-    tag: "Residential",
-    img: "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1000&q=80",
-    alt: "Elegant bedroom with layered textiles and soft lighting",
-  },
-  {
-    title: "Maison Kitchen",
-    tag: "Kitchen",
-    img: "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=1000&q=80",
-    alt: "Refined kitchen with marble surfaces and brass fittings",
-  },
-  {
-    title: "Aria Residence",
-    tag: "Residential",
-    img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80",
-    alt: "Sunlit living room with neutral sofa and timber accents",
-  },
-  {
-    title: "Verde Suite",
-    tag: "Hospitality",
-    img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80",
-    alt: "Boutique hotel suite with warm lighting and lush textures",
-  },
-  {
-    title: "Nordic Bath",
-    tag: "Bathroom",
-    img: "https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1000&q=80",
-    alt: "Serene stone bathroom with freestanding tub and soft daylight",
-  },
-  {
-    title: "Solis Dining",
-    tag: "Residential",
-    img: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1000&q=80",
-    alt: "Elegant dining room with sculptural lighting and art",
+    title: "Courtyard Lounge",
+    tag: "Outdoor",
+    img: "/Residential/IMG_1693.JPG",
+    alt: "Whitewashed courtyard lounge with a sunken firepit, floor cushions and tropical planting",
   },
 ];
 
@@ -142,9 +148,9 @@ export default function Portfolio() {
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
           <SectionReveal className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <p className="eyebrow">Selected Work</p>
+              <p className="eyebrow">Visualised</p>
               <h2 className="mt-5 font-serif text-4xl font-normal leading-tight text-beige sm:text-5xl">
-                A portfolio built on detail.
+                Every interior, down to the detail.
               </h2>
             </div>
             <a
@@ -178,9 +184,9 @@ export default function Portfolio() {
         />
         <div className="relative z-10 mx-auto flex w-full max-w-7xl items-end justify-between gap-6 px-6 pb-10 lg:px-10">
           <div className="max-w-2xl">
-            <p className="eyebrow">Selected Work</p>
+            <p className="eyebrow">Visualised</p>
             <h2 className="mt-5 font-serif text-4xl font-normal leading-tight text-beige sm:text-5xl">
-              A portfolio built on detail.
+              Every interior, down to the detail.
             </h2>
           </div>
           <span className="font-cinzel hidden text-[11px] uppercase tracking-[0.2em] text-beige/45 lg:block">

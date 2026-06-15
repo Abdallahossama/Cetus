@@ -15,8 +15,8 @@ export default function About() {
           {/* Editorial image */}
           <SectionReveal className="relative order-2 lg:order-1">
             <ParallaxImage
-              src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1100&q=80"
-              alt="A softly lit living room with layered neutral textures and brass accents"
+              src="/Residential/IMG_1685.JPG"
+              alt="A double-height loft with a mezzanine, exposed brick and a teal modular sofa"
               className="aspect-[4/5] rounded-sm bg-ink"
               amount={50}
             />

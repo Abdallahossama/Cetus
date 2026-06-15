@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cetus Design — Interior Design Studio",
     description:
-      "Refined interiors, thoughtfully delivered. Discover our process, services and portfolio.",
+      "Refined interiors, thoughtfully delivered. Discover our process, services and visualised work.",
     type: "website",
   },
 };

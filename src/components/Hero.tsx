@@ -22,8 +22,12 @@ import { useMediaQuery } from "@/lib/useMediaQuery";
 // Real-time 3D is client-only and lazy — keeps initial paint light.
 const Scene = dynamic(() => import("./three/Scene"), { ssr: false });
 
-const LUXURY_IMG =
-  "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1100&q=80";
+// Wide interior photo blended low into the hero — fades to fully transparent
+// behind the left-hand copy and grows richest on the right, mixing into the
+// navy gradient rather than reading as a flat photo.
+const HERO_BG = "/Business/IMG_1674.JPG";
+// Static luxury photo used only as the reduced-motion / phone fallback visual.
+const LUXURY_IMG = "/Residential/IMG_1683.JPG";
 
 // Floating credential badges that hover around the 3D room.
 const STAT_BADGES = [
@@ -67,22 +71,22 @@ const STAT_BADGES = [
 // `depth` drives how strongly each reacts to the cursor — bigger = closer.
 const BACKDROP_FRAMES = [
   {
-    src: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=520&q=70",
-    alt: "Minimal living room with floor-to-ceiling windows",
+    src: "/Residential/IMG_1683.JPG",
+    alt: "Private wellness suite with a sunken spa pool and warm lighting",
     className: "left-[-5%] top-[2%] w-[26%] rotate-[-7deg] lg:left-[-13%] lg:top-[0%]",
     depth: 26,
     delay: 0.2,
   },
   {
-    src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=520&q=70",
-    alt: "Elegant living room with sofa and warm lighting",
+    src: "/Business/IMG_1703.JPG",
+    alt: "Minimalist café in warm plaster tones with timber tables",
     className: "right-[0%] top-[10%] w-[22%] rotate-[6deg] lg:right-[-10%]",
     depth: 16,
     delay: 0.32,
   },
   {
-    src: "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=520&q=70",
-    alt: "Elegant bedroom with layered textiles and soft lighting",
+    src: "/Residential/IMG_1671.JPG",
+    alt: "Living room shown half as a concept drawing and half as a finished render",
     className: "bottom-[3%] left-[7%] w-[24%] rotate-[4deg] lg:left-[-3%]",
     depth: 21,
     delay: 0.44,
@@ -152,19 +156,21 @@ export default function Hero() {
       ref={sectionRef}
       className="bg-velvet grain relative flex min-h-dvh items-center overflow-hidden pt-28 pb-16 lg:pt-20"
     >
-      {/* Faint room photo on the left, dissolving into the navy field */}
+      {/* Wide interior photo entering from the left, dissolving into the navy
+          field as it moves right — muted under the ink wash so the copy stays
+          readable. */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-15"
+          className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
-            backgroundImage: `url(${LUXURY_IMG})`,
+            backgroundImage: `url(${HERO_BG})`,
             maskImage:
-              "linear-gradient(to right, black 0%, black 24%, transparent 58%)",
+              "linear-gradient(to right, black 0%, black 30%, transparent 78%)",
             WebkitMaskImage:
-              "linear-gradient(to right, black 0%, black 24%, transparent 58%)",
+              "linear-gradient(to right, black 0%, black 30%, transparent 78%)",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/75 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/30" />
       </div>
 
@@ -240,10 +246,14 @@ export default function Hero() {
             </div>
           )}
 
+          {/* Soft gold glow behind the room — kept OUTSIDE the clipped box
+              below so its blur stays round and edgeless (the box's
+              overflow-hidden would otherwise crop it into a rectangle). */}
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-2/3 w-2/3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/20 blur-3xl" />
+
           {/* WebGL interior vignette (≥768px) — clipped to its own box so the
               swaying room never spills past the div edge. */}
           <div className="absolute inset-0 z-[1] overflow-hidden">
-            <div className="pointer-events-none absolute left-1/2 top-1/2 h-2/3 w-2/3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/20 blur-3xl" />
             {show3D && (
               <SceneBoundary fallback={null}>
                 <Scene
@@ -267,7 +277,7 @@ export default function Hero() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={LUXURY_IMG}
-                  alt="A luxurious modern living room with warm lighting and brass accents"
+                  alt="A private wellness suite with a sunken spa pool, timber deck and warm lighting"
                   className="h-full w-full object-cover"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-navy/40 via-transparent to-gold/10" />

@@ -29,8 +29,8 @@ export const phases: Phase[] = [
     ],
     deliverable: "A signed brief, measured survey and an agreed budget.",
     icon: Search,
-    img: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80",
-    alt: "Designers reviewing plans and material samples at a table",
+    img: "/Residential/IMG_1671.JPG",
+    alt: "Living room shown half as a technical concept drawing and half as a finished render",
   },
   {
     no: "02",
@@ -47,8 +47,8 @@ export const phases: Phase[] = [
     ],
     deliverable: "Space plans, 3D visuals and a full finishes schedule.",
     icon: PencilRuler,
-    img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80",
-    alt: "Refined modern living room rendered with warm natural light",
+    img: "/Business/IMG_1674.JPG",
+    alt: "Fine-dining restaurant with blue-and-white tile arches, marble floors and velvet chairs",
   },
   {
     no: "03",
@@ -65,7 +65,7 @@ export const phases: Phase[] = [
     ],
     deliverable: "A fully built, styled and handover-ready space.",
     icon: Sparkles,
-    img: "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1200&q=80",
-    alt: "Beautifully styled bedroom with layered textiles and soft lighting",
+    img: "/Residential/IMG_1693.JPG",
+    alt: "Whitewashed courtyard lounge with a sunken firepit, floor cushions and tropical planting",
   },
 ];

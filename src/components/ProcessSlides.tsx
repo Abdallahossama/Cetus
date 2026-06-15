@@ -1,14 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
   motion,
+  useInView,
   useReducedMotion,
   type PanInfo,
 } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Clock, PackageCheck } from "lucide-react";
 import { phases } from "@/lib/process";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 
 const AUTOPLAY_MS = 6500;
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -22,6 +24,13 @@ const slideVariants = {
 /** The non-pinned slide deck — used on mobile and with reduced motion. */
 export default function ProcessSlides() {
   const reduceMotion = useReducedMotion();
+  // Only auto-advance while the deck is on screen — otherwise it drifts past
+  // phase 01 before the user ever scrolls down to it (especially on mobile).
+  const rootRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(rootRef, { amount: 0.4 });
+  // Hover-to-pause is only meaningful with a real pointer; on touch a tap fires
+  // a synthetic mouseenter that would otherwise pause autoplay indefinitely.
+  const hasPointer = useMediaQuery("(pointer: fine)");
   const [[page, dir], setPage] = useState<[number, number]>([0, 0]);
   const [paused, setPaused] = useState(false);
   const index = ((page % phases.length) + phases.length) % phases.length;
@@ -39,10 +48,10 @@ export default function ProcessSlides() {
   }, []);
 
   useEffect(() => {
-    if (paused || reduceMotion) return;
+    if (paused || reduceMotion || !inView) return;
     const id = setTimeout(() => paginate(1), AUTOPLAY_MS);
     return () => clearTimeout(id);
-  }, [page, paused, reduceMotion, paginate]);
+  }, [page, paused, reduceMotion, inView, paginate]);
 
   function onDragEnd(_e: unknown, info: PanInfo) {
     if (info.offset.x < -80) paginate(1);
@@ -51,9 +60,10 @@ export default function ProcessSlides() {
 
   return (
     <div
+      ref={rootRef}
       className="relative mt-12"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onMouseEnter={hasPointer ? () => setPaused(true) : undefined}
+      onMouseLeave={hasPointer ? () => setPaused(false) : undefined}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
